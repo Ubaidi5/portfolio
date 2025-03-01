@@ -25,9 +25,10 @@ export const Profile = () => {
           <div className="w-full flex flex-row justify-between items-top ">
             <div className="flex flex-row md:flex-col items-center md:items-start w-full gap-4">
               <div className="rounded-full w-16 md:w-full aspect-square overflow-hidden">
+                {/* eslint-disable @next/next/no-img-element */}
                 <img
                   className="w-full h-full object-cover"
-                  src="/me.jpg"
+                  src="/profile-picture.jpg"
                   alt="Profile Picture"
                   style={{ objectPosition: "0 16%", scale: 1.3 }}
                 />
