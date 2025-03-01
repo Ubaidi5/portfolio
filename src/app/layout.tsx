@@ -1,5 +1,6 @@
 import "./globals.css";
 import { constructMetadata } from "@/lib/metadata";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = constructMetadata();
 
@@ -10,7 +11,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
