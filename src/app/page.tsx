@@ -3,6 +3,14 @@ import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
 import { Profile } from "@/components/Profile";
 import { Skills } from "@/components/Skills";
+import { generateBaseMetadata } from "@/lib/metadata";
+
+export const metadata = generateBaseMetadata({
+  title: "Ubaid Hussain - Web Developer Portfolio",
+  description:
+    "Ubaid Hussain | MERN Stack Developer | Explore my innovative web projects built with React, Next.js, and Node.js.",
+  image: "/images/og-image.png",
+});
 
 export default function Home() {
   return (
