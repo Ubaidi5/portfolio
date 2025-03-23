@@ -1,20 +1,20 @@
-import Link from 'next/link';
+import Link from "next/link";
 import type { Metadata } from "next";
 
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from "lucide-react";
 
 import {
   Card,
   CardTitle,
   CardFooter,
   CardHeader,
-  CardContent
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+  CardContent,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/";
 
 export const metadata: Metadata = {
-    title: '404 - Page Not Found',
-}
+  title: "404 - Page Not Found",
+};
 
 export default function NotFound() {
   return (
@@ -38,5 +38,5 @@ export default function NotFound() {
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }

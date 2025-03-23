@@ -1,15 +1,11 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
-import { 
-    Card, 
-    CardHeader, 
-    CardContent 
-} from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/";
 
 export const metadata: Metadata = {
-    title: 'Loading...',
-}
+  title: "Loading...",
+};
 
 export default function Loading() {
   return (
@@ -114,5 +110,5 @@ export default function Loading() {
         </div>
       </div>
     </div>
-  )
+  );
 }
