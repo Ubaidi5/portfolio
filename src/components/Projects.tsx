@@ -12,7 +12,7 @@ export const projects = [
     link: "https://checkeden.com",
   },
   {
-    title: "Task Management App",
+    title: "ZeroSlip",
     description:
       "A ZeroSlip Smart Receipt is a tax-compliant, easily accessible proof of purchase that lives directly in your Customer App, or via SMS. And it’s free.",
     tech: "React - Next",

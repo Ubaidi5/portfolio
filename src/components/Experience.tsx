@@ -6,7 +6,7 @@ const jobs = [
   {
     role: "Senior Software Engineer",
     company: "SparkoSol",
-    logo: "/sparko_sol_logo.jpg",
+    logo: "/images/sparko_sol_logo.jpg",
     duration: "Aug 2024 - Jan 2025",
     description:
       "Lead developer for multiple high-impact projects, mentoring junior developers, and implementing best practices.",
@@ -14,7 +14,7 @@ const jobs = [
   {
     role: "Senior Software Engineer",
     company: "Inspon Tech",
-    logo: "/inspon_logo.jpg",
+    logo: "/images/inspon_logo.jpg",
     duration: "Sep 2022 - Jul 2024",
     description:
       "Build various plugins for Shopify and Wix platform which enable users enjoying seamless eCommerce experiences and driving client growth.",
@@ -22,7 +22,7 @@ const jobs = [
   {
     role: "Associate Software Developer",
     company: "Eforte Solutions",
-    logo: "/eforte_solutions_logo.jpg",
+    logo: "/images/eforte_solutions_logo.jpg",
     duration: "Apr 2020 - Aug 2022",
     description:
       "Developed and maintained various client projects, focusing on responsive design and performance optimization.",
@@ -30,7 +30,7 @@ const jobs = [
   {
     role: "Volunteer",
     company: "Noble Missions for United Nation",
-    logo: "/noble_missions_logo.jpg",
+    logo: "/images/noble_missions_logo.jpg",
     duration: "Nov 2019 - Aug 2022",
     description:
       "Volunteered as a frontend developer and create responsive user interface for I Take Actions",

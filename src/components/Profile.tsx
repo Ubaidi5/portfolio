@@ -28,8 +28,8 @@ export const Profile = () => {
                 {/* eslint-disable @next/next/no-img-element */}
                 <img
                   className="w-full h-full object-cover"
-                  src="/profile-picture.jpg"
-                  alt="Profile Picture"
+                  src="/images/profile-picture.jpg"
+                  alt="Ubaid Hussain"
                   style={{ objectPosition: "0 16%", scale: 1.3 }}
                 />
               </div>
