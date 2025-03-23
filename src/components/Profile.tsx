@@ -1,9 +1,9 @@
 "use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useState } from "react";
+import { Button, Input, Textarea, Image } from "@/components/ui";
 import {
   Dialog,
   DialogContent,
@@ -12,10 +12,9 @@ import {
   DialogFooter,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import Image from "next/image";
+
 import profileImage from "@public/images/profile-picture.webp";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const socials = [
   {

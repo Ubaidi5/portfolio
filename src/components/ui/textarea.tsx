@@ -19,4 +19,4 @@ const Textarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement>> = ({
   );
 };
 
-export { Textarea };
+export default Textarea;

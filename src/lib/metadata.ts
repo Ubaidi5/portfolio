@@ -108,7 +108,7 @@ export function getLayoutMetadata() {
     applicationName: "Ubaid Hussain",
     icons: {
       icon: "/favicons/favicon.ico",
-      shortcut: "/favicons/favicon-16x16.png",
+      shortcut: "/favicons/16x16.png",
       apple: "/favicons/apple-touch-icon.png",
       other: [
         {

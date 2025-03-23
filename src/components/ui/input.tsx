@@ -21,5 +21,4 @@ const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
   );
 };
 
-Input.displayName = "Input";
-export { Input };
+export default Input;
