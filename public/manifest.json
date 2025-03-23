@@ -8,9 +8,9 @@
       "type": "image/png"
     },
     {
-      "src": "/favicons/512x512.png",
+      "src": "/favicons/512x512.webp",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/webp"
     }
   ],
   "orientation": "portrait-primary",

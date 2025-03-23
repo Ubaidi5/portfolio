@@ -9,7 +9,7 @@ export const metadata = generateBaseMetadata({
   title: "Ubaid Hussain - Web Developer Portfolio",
   description:
     "Ubaid Hussain | MERN Stack Developer | Explore my innovative web projects built with React, Next.js, and Node.js.",
-  image: "/favicons/og-image.png",
+  image: "/favicons/og-image.webp",
 });
 
 export default function Home() {

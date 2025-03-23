@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
-import profileImage from "@public/images/profile-picture.jpg";
+import profileImage from "@public/images/profile-picture.webp";
 
 const socials = [
   {
