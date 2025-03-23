@@ -1,8 +1,8 @@
 import "./globals.css";
-import { constructMetadata } from "@/lib/metadata";
+import { getLayoutMetadata } from "@/lib/metadata";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-export const metadata = constructMetadata();
+export const metadata = getLayoutMetadata();
 
 export default function RootLayout({
   children,
