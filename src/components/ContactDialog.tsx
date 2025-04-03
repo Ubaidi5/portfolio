@@ -187,8 +187,8 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
       });
 
       // Try to get country using IP geolocation
-      let country = "Unknown";
-      let city = "Unknown";
+      const country = "Unknown";
+      const city = "Unknown";
       let browser = "Unknown";
       let device = "Unknown";
 
