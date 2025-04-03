@@ -31,7 +31,7 @@ export function generateBaseMetadata(props: MetadataProps): Metadata {
   } = props;
 
   // Construct the absolute URL
-  const baseUrl = process.env.BASE_URL || "";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
   const url = `${baseUrl}${pathname}`;
 
   // Construct the absolute image URL if provided
