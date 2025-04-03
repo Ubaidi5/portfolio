@@ -10,6 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button, Input, Textarea } from "@/components/ui";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 interface ContactDialogProps {
   isOpen: boolean;
@@ -24,6 +25,10 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({ email: "", message: "" });
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   const validateForm = () => {
     let isValid = true;
@@ -55,6 +60,7 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
 
     try {
       // Get user's location data
@@ -76,16 +82,19 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
       }
 
       // Show success message
-      alert(
-        `Thank you for reaching out! I'll get back to you at ${email} soon.`
-      );
+      setSubmitStatus({
+        type: "success",
+        message: `Thank you for reaching out! I'll get back to you at ${email} soon.`,
+      });
 
       // Reset form
       setEmail("");
       setMessage("");
-      onOpenChange(false);
     } catch (error) {
-      alert("Failed to send message. Please try again later.");
+      setSubmitStatus({
+        type: "error",
+        message: "Failed to send message. Please try again later.",
+      });
       console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
@@ -201,7 +210,7 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
               type="email"
               placeholder="your@email.com"
               value={email}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setEmail(e.target.value);
                 if (errors.email) setErrors({ ...errors, email: "" });
               }}
@@ -221,7 +230,7 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
               id="message"
               placeholder="Tell me about your project or job opportunity..."
               value={message}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 setMessage(e.target.value);
                 if (errors.message) setErrors({ ...errors, message: "" });
               }}
@@ -234,6 +243,25 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
               <p className="text-red-500 text-xs mt-1">{errors.message}</p>
             )}
           </div>
+
+          {/* Status message */}
+          {submitStatus.type && (
+            <div
+              className={`p-3 rounded-md flex items-start gap-2 ${
+                submitStatus.type === "success"
+                  ? "bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-300"
+                  : "bg-red-50 text-red-800 dark:bg-red-900/20 dark:text-red-300"
+              }`}
+            >
+              {submitStatus.type === "success" ? (
+                <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
+              ) : (
+                <XCircle className="h-5 w-5 mt-0.5 flex-shrink-0" />
+              )}
+              <p className="text-sm">{submitStatus.message}</p>
+            </div>
+          )}
+
           <DialogFooter className="mt-6 sm:mt-8">
             <Button
               type="submit"
