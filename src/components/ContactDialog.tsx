@@ -12,6 +12,61 @@ import {
 import { Button, Input, Textarea } from "@/components/ui";
 import { CheckCircle2, XCircle } from "lucide-react";
 
+// List of common disposable email domains
+const DISPOSABLE_EMAIL_DOMAINS = [
+  "10minutemail.com",
+  "mailinator.com",
+  "guerrillamail.com",
+  "getairmail.com",
+  "getnada.com",
+  "yopmail.com",
+  "tempmail.net",
+  "temp-mail.org",
+  "mailnesia.com",
+  "tempr.email",
+  "discard.email",
+  "maildrop.cc",
+  "mailspeed.xyz",
+  "emailondeck.com",
+  "throwawaymail.com",
+  "trashmail.com",
+  "temp-mail.io",
+  "spamgourmet.com",
+  "fakeinbox.com",
+  "sharklasers.com",
+  "grr.la",
+  "tempinbox.com",
+  "0815.ru",
+  "1secmail.com",
+  "1secmail.net",
+  "1secmail.org",
+  "mailnull.com",
+  "tempinbox.com",
+  "disposable-email.ml",
+  "mohmal.com",
+  "emailfake.com",
+  "emaildrop.io",
+  "dropmail.me",
+  "mintemail.com",
+  "tempmailer.com",
+  "disposablemail.com",
+  "tmpmail.org",
+  "anonbox.net",
+  "dispostable.com",
+  "correotemporal.org",
+  "inboxalias.com",
+  "mailcatch.com",
+  "fakemail.net",
+  "tempmail.dev",
+  "jetable.org",
+  "tempmailaddress.com",
+  "emailtemp.org",
+  "tempmail.plus",
+  "fakemailgenerator.com",
+  "generator.email",
+  "temp-inbox.com",
+];
+
 interface ContactDialogProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
@@ -30,6 +85,14 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
     message: string;
   }>({ type: null, message: "" });
 
+  // Check if email is from a disposable domain
+  const isDisposableEmail = (email: string): boolean => {
+    if (!email.includes("@")) return false;
+
+    const domain = email.split("@")[1].toLowerCase();
+    return DISPOSABLE_EMAIL_DOMAINS.includes(domain);
+  };
+
   const validateForm = () => {
     let isValid = true;
     const newErrors = { email: "", message: "" };
@@ -39,6 +102,10 @@ export const ContactDialog: React.FC<ContactDialogProps> = ({
       isValid = false;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "Please enter a valid email";
+      isValid = false;
+    } else if (isDisposableEmail(email)) {
+      newErrors.email =
+        "Please use a permanent email address, not a temporary one";
       isValid = false;
     }
 
