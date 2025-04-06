@@ -60,7 +60,43 @@ export default {
         nunito: ["var(--nunito)"],
         roboto: ["var(--roboto-slab)"],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "100%",
+            color: "hsl(var(--foreground))",
+            a: {
+              color: "hsl(var(--primary))",
+              "&:hover": {
+                color: "hsl(var(--primary))",
+              },
+            },
+            h1: {
+              color: "hsl(var(--foreground))",
+            },
+            h2: {
+              color: "hsl(var(--foreground))",
+            },
+            h3: {
+              color: "hsl(var(--foreground))",
+            },
+            h4: {
+              color: "hsl(var(--foreground))",
+            },
+            blockquote: {
+              color: "hsl(var(--muted-foreground))",
+              borderLeftColor: "hsl(var(--border))",
+            },
+            code: {
+              color: "hsl(var(--foreground))",
+            },
+            strong: {
+              color: "hsl(var(--foreground))",
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
