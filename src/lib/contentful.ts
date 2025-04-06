@@ -9,7 +9,11 @@ export const createContentClient = () => {
 const client = createContentClient();
 
 export const getBlogPosts = async () => {
-  const results = await client.getEntries({ content_type: "pageBlogPost" });
+  const results = await client.getEntries({
+    content_type: "pageBlogPost",
+    include: 0, // Not getting unused data
+  });
+
   const blogPosts = results.items.map((blog) => blog.fields);
   return blogPosts;
 };
