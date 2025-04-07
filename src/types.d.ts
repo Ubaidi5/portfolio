@@ -47,7 +47,7 @@ interface Blog {
   relatedBlogPosts: Array<{ fields: Blog }>;
   content: {
     content: Array<any>;
-    data: {};
+    data: object;
     nodeType: "document";
   };
 }

@@ -56,7 +56,6 @@ export default async function BlogPostPage(props: NextPageProps) {
                 const text = textNode.value;
                 const marks = textNode.marks || [];
 
-                let className = "";
                 let markElement = <>{text}</>;
 
                 // Apply text styling based on marks
