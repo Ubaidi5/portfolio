@@ -1,7 +1,11 @@
 "use client";
 import { Card, CardTitle, CardHeader, CardContent } from "@/components/ui/card";
 
-export const AboutMe = () => {
+interface AboutMeProps {
+  yearsOfExperience: number;
+}
+
+export const AboutMe = ({ yearsOfExperience }: AboutMeProps) => {
   return (
     <Card className="mb-6">
       <CardHeader className="flex flex-row justify-between items-baseline">
@@ -12,7 +16,7 @@ export const AboutMe = () => {
           className="text-muted-foreground"
           dangerouslySetInnerHTML={{
             __html: ` I craft high-performance, visually stunning web apps that turn ideas
-          into growth-driven digital experiences. With 4+ years of expertise in
+          into growth-driven digital experiences. With ${yearsOfExperience}+ years of expertise in
           React.js, Next.js, and TypeScript, I specialize in scalable
           dashboards, eCommerce platforms, and custom solutions designed to make
           your brand unforgettable.

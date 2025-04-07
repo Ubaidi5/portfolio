@@ -5,6 +5,15 @@ import { Profile } from "@/components/Profile";
 import { Skills } from "@/components/Skills";
 import { generateBaseMetadata } from "@/lib/metadata";
 
+// Calculate years of experience
+function calculateYearsOfExperience() {
+  const startDate = new Date("2019-11-01");
+  const currentDate = new Date();
+  const diffTime = Math.abs(currentDate.getTime() - startDate.getTime());
+  const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365));
+  return diffYears;
+}
+
 export const metadata = generateBaseMetadata({
   title: "Ubaid Hussain - Web Developer Portfolio",
   description:
@@ -12,7 +21,12 @@ export const metadata = generateBaseMetadata({
   image: "/favicons/og-image.webp",
 });
 
+// Enable ISR with monthly revalidation
+export const revalidate = 2592000; // 30 days in seconds
+
 export default function Home() {
+  const yearsOfExperience = calculateYearsOfExperience();
+
   return (
     <div className="bg-background min-h-screen">
       <div className="container max-w-screen-lg mx-auto px-4 py-8">
@@ -23,7 +37,7 @@ export default function Home() {
           </aside>
 
           <main className="md:col-span-2">
-            <AboutMe />
+            <AboutMe yearsOfExperience={yearsOfExperience} />
             <Projects />
             <Experience />
           </main>
