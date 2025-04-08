@@ -64,29 +64,37 @@ export default async function BlogPostPage(props: NextPageProps) {
       switch (node.nodeType) {
         case "paragraph":
           return (
-            <p key={index} className="mb-6 leading-relaxed">
+            <p key={`p-${index}`} className="mb-6 leading-relaxed">
               {node.content.map((textNode: any, i: number) => {
                 const text = textNode.value;
                 const marks = textNode.marks || [];
 
-                let markElement = <>{text}</>;
+                let markElement = (
+                  <span key={`text-${index}-${i}`}>{text}</span>
+                );
 
                 // Apply text styling based on marks
                 marks.forEach((mark: any) => {
                   switch (mark.type) {
                     case "bold":
                       markElement = (
-                        <strong key={`${index}-${i}`}>{text}</strong>
+                        <strong key={`bold-${index}-${i}`}>{text}</strong>
                       );
                       break;
                     case "italic":
-                      markElement = <em key={`${index}-${i}`}>{text}</em>;
+                      markElement = (
+                        <em key={`italic-${index}-${i}`}>{text}</em>
+                      );
                       break;
                     case "underline":
-                      markElement = <u key={`${index}-${i}`}>{text}</u>;
+                      markElement = (
+                        <u key={`underline-${index}-${i}`}>{text}</u>
+                      );
                       break;
                     default:
-                      markElement = <span key={`${index}-${i}`}>{text}</span>;
+                      markElement = (
+                        <span key={`text-${index}-${i}`}>{text}</span>
+                      );
                   }
                 });
 
@@ -108,7 +116,7 @@ export default async function BlogPostPage(props: NextPageProps) {
             if (image?.fields?.file?.url) {
               return (
                 <figure
-                  key={index}
+                  key={`figure-${index}`}
                   className={`my-8 ${isFullWidth ? "w-full" : "w-4/5 mx-auto"}`}
                 >
                   <div className="relative h-[300px] md:h-[400px] w-full">
@@ -212,7 +220,7 @@ export default async function BlogPostPage(props: NextPageProps) {
                   .slice(0, 2)
                   .map((relatedPost: any, index: number) => (
                     <div
-                      key={index}
+                      key={`related-${index}`}
                       className="border rounded-lg overflow-hidden hover:shadow-md transition-shadow"
                     >
                       {relatedPost.fields?.featuredImage?.fields?.file?.url && (
