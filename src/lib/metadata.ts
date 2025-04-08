@@ -96,44 +96,69 @@ export function generateBaseMetadata(props: MetadataProps): Metadata {
   };
 }
 
-export function getLayoutMetadata() {
-  const commonMetadata = generateBaseMetadata({});
-
-  const metadata = {
-    ...commonMetadata,
+export const getLayoutMetadata = () => {
+  return {
     title: {
-      default: "Ubaid Hussain",
+      default: "Ubaid Hussain | Solopreneur Developer",
       template: "%s | Ubaid Hussain",
     },
-    applicationName: "Ubaid Hussain",
-    icons: {
-      icon: "/favicons/favicon.ico",
-      shortcut: "/favicons/16x16.png",
-      apple: "/favicons/apple-touch-icon.png",
-      other: [
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "16x16",
-          url: "/favicons/16x16.png",
-        },
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "32x32",
-          url: "/favicons/32x32.png",
-        },
-        {
-          rel: "mask-icon",
-          url: "/favicons/safari-pinned-tab.svg",
-          color: "#263a5e",
-        },
-      ],
+    description:
+      "Portfolio website of Ubaid Hussain, a solopreneur developer specializing in React, Next.js, and TypeScript.",
+    keywords: [
+      "Ubaid Hussain",
+      "Web Developer",
+      "React Developer",
+      "Next.js Developer",
+      "TypeScript",
+      "Portfolio",
+      "Solopreneur",
+    ],
+    authors: [{ name: "Ubaid Hussain" }],
+    creator: "Ubaid Hussain",
+    publisher: "Ubaid Hussain",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
     },
-
-    // Manifest
-    manifest: "/manifest.json",
+    metadataBase: new URL("https://ubaidhussain.com"),
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      title: "Ubaid Hussain | Solopreneur Developer",
+      description:
+        "Portfolio website of Ubaid Hussain, a solopreneur developer specializing in React, Next.js, and TypeScript.",
+      url: "https://ubaidhussain.com",
+      siteName: "Ubaid Hussain",
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Ubaid Hussain | Solopreneur Developer",
+      description:
+        "Portfolio website of Ubaid Hussain, a solopreneur developer specializing in React, Next.js, and TypeScript.",
+      creator: "@ubaidnext",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    verification: {
+      google: "your-google-site-verification",
+    },
+    // Add sitemap reference
+    other: {
+      "google-site-verification": "your-google-site-verification",
+      sitemap: "https://ubaidhussain.com/sitemap.xml",
+    },
   };
-
-  return metadata;
-}
+};

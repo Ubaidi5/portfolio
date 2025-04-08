@@ -1,17 +1,15 @@
-import { MetadataRoute } from 'next';
-
-const isProduction = process.env.VERCEL_ENV === 'production';
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://ubaidhussain.com";
+
   return {
-    rules: isProduction
-      ? {
-          userAgent: '*',
-          allow: '/', // Allow all pages on production
-        }
-      : {
-          userAgent: '*',
-          disallow: '/', // Disallow all crawling for non-production
-        },
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/admin/", "/private/", "/api/"],
+    },
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
