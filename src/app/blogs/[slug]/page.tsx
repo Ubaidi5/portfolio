@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBlogPostBySlug } from "@/lib/contentful";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/contentful";
 import { generateBaseMetadata } from "@/lib/metadata";
+import { ArrowLeft } from "lucide-react";
 
 // Helper function to format dates
 const formatDate = (dateString: string) => {
@@ -16,6 +18,17 @@ const formatDate = (dateString: string) => {
 type NextPageProps = {
   params: Promise<{ [key: string]: string }>;
 };
+
+// Generate static paths at build time
+export async function generateStaticParams() {
+  const blogs = await getBlogPosts();
+  return blogs.map((blog: any) => ({
+    slug: blog.slug,
+  }));
+}
+
+// Force static generation
+export const dynamic = "force-static";
 
 // Generate metadata for the page
 export async function generateMetadata(props: NextPageProps) {
@@ -127,6 +140,17 @@ export default async function BlogPostPage(props: NextPageProps) {
   return (
     <div className="bg-background min-h-screen">
       <div className="container max-w-screen-lg mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Link
+            href="/blogs"
+            className="inline-flex items-center px-4 py-1 rounded-full border border-[#373737]"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Blogs
+          </Link>
+        </div>
+
         <article>
           <header className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
@@ -175,7 +199,7 @@ export default async function BlogPostPage(props: NextPageProps) {
           )}
 
           {/* Blog Content */}
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-invert max-w-none">
             {renderContent(blog.content)}
           </div>
 

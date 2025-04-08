@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Image } from "@/components/ui";
 import { getBlogPosts } from "@/lib/contentful";
 import { generateBaseMetadata } from "@/lib/metadata";
+import { ArrowLeft } from "lucide-react";
 
 const formatDate = (dateString: string) => {
   const options: Intl.DateTimeFormatOptions = {
@@ -18,6 +19,17 @@ export const metadata = generateBaseMetadata({
     "Explore my collection of articles on web development, technology trends, and more.",
 });
 
+// Generate static params at build time
+export const generateStaticParams = async () => {
+  const blogs = await getBlogPosts();
+  return blogs.map((blog: any) => ({
+    slug: blog.slug,
+  }));
+};
+
+// Force static generation
+export const dynamic = "force-static";
+
 export default async function BlogsPage() {
   const blogs = await getBlogPosts();
 
@@ -25,6 +37,13 @@ export default async function BlogsPage() {
     <div className="bg-background min-h-screen">
       <div className="container max-w-screen-xl mx-auto px-4 py-8">
         <div className="mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center px-4 py-1 mb-4 rounded-full border border-[#373737]"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
           <h1 className="text-3xl font-bold mb-3">Blogs</h1>
           <p className="text-muted-foreground">
             Explore my thoughts, insights and experiences in technology and
