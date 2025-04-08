@@ -102,6 +102,7 @@ export const getLayoutMetadata = () => {
       default: "Ubaid Hussain | Solopreneur Developer",
       template: "%s | Ubaid Hussain",
     },
+    applicationName: "Ubaid Hussain",
     description:
       "Portfolio website of Ubaid Hussain, a solopreneur developer specializing in React, Next.js, and TypeScript.",
     keywords: [
@@ -125,6 +126,32 @@ export const getLayoutMetadata = () => {
     alternates: {
       canonical: "/",
     },
+    icons: {
+      icon: "/favicons/favicon.ico",
+      shortcut: "/favicons/16x16.png",
+      apple: "/favicons/apple-touch-icon.png",
+      other: [
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "16x16",
+          url: "/favicons/16x16.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          url: "/favicons/32x32.png",
+        },
+        {
+          rel: "mask-icon",
+          url: "/favicons/safari-pinned-tab.svg",
+          color: "#263a5e",
+        },
+      ],
+    },
+    // Manifest
+    manifest: "/manifest.json",
     openGraph: {
       title: "Ubaid Hussain | Solopreneur Developer",
       description:
