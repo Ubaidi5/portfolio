@@ -1,29 +1,25 @@
+"use server";
+
 import { createClient } from "contentful";
 
-export const createContentClient = () => {
+function createContentClient() {
   return createClient({
-    space:
-      process.env.CONTENTFUL_SPACE_ID ||
-      process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
-      "",
-    accessToken:
-      process.env.CONTENTFUL_ACCESS_TOKEN ||
-      process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN ||
-      "",
+    space: process.env.CONTENTFUL_SPACE_ID || "",
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
   });
-};
+}
 const client = createContentClient();
 
-export const getBlogPosts = async () => {
+export async function getBlogPosts() {
   const results = await client.getEntries({
     content_type: "pageBlogPost",
   });
 
   const blogPosts = results.items.map((blog) => blog.fields);
   return blogPosts;
-};
+}
 
-export const getBlogPostBySlug = async (slug: string) => {
+export async function getBlogPostBySlug(slug: string) {
   const results = await client.getEntries({
     content_type: "pageBlogPost",
     "fields.slug": slug,
@@ -35,9 +31,9 @@ export const getBlogPostBySlug = async (slug: string) => {
   }
 
   return results.items[0].fields;
-};
+}
 
-export const getTest = async (slug: string) => {
+export async function getTest(slug: string) {
   const results = await client.getEntries({
     content_type: "pageBlogPost",
     "fields.slug": slug,
@@ -49,4 +45,4 @@ export const getTest = async (slug: string) => {
   }
 
   return results.items[0].fields;
-};
+}
