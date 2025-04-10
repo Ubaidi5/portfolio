@@ -3,6 +3,7 @@ import { getLayoutMetadata } from "@/lib/metadata";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@/lib/analytics";
 
 export const metadata = getLayoutMetadata();
 
@@ -18,6 +19,7 @@ export default function RootLayout({
         <Footer />
         <SpeedInsights />
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );
