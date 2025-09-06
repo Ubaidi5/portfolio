@@ -73,7 +73,7 @@ export const Profile: React.FC = () => {
 
             <Button className="mt-2 w-full" variant="outline" asChild>
               <Link
-                href="/files/ubaid-hussain-resume.pdf"
+                href="/files/Ubaid Hussain - Senior Frontend Developer.pdf"
                 target="_blank"
                 className="font-semibold uppercase"
               >
