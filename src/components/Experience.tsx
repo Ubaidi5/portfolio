@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const jobs = [
   {
     role: "Senior Frontend Developer",
-    company: "InsuranceMarkets",
+    company: "InsuranceMarket.ae™",
     logo: "/images/insurance_market_logo.jpeg",
     duration: "Feb 2025 - Present",
     description:
