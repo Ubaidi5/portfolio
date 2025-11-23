@@ -48,36 +48,69 @@ const jobs = [
 export const Experience = () => {
   return (
     <>
-      <h2 className="text-xl font-bold mb-4 text-foreground">
+      <h2
+        id="work-experience-heading"
+        className="text-xl font-bold mb-4 text-foreground"
+      >
         Work Experience
       </h2>
       <Card>
         <CardContent className="pt-6">
-          <ul className="space-y-8">
-            {jobs.map((j, i) => (
-              <li key={i} className="border-b last:border-b-0 pb-8 last:pb-0">
-                {/* Job Details */}
-                <div className="flex items-center space-x-4">
-                  <Image
-                    src={j.logo}
-                    alt={j.company}
-                    width={40}
-                    height={40}
-                    className="rounded-md border shadow-md object-cover"
-                  />
-                  <div>
-                    <h3 className="font-semibold">{j.role}</h3>
-                    <p className="text-sm text-muted-foreground">{j.company}</p>
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground mt-2 flex items-center">
-                  <CalendarDays className="size-3 mr-2" />
-                  {j.duration}
-                </p>
-                <p className="text-sm mt-2">{j.description}</p>
-              </li>
-            ))}
-          </ul>
+          <section aria-labelledby="work-experience-heading">
+            <ul
+              className="space-y-8"
+              role="list"
+              aria-label="Work experience, most recent first"
+            >
+              {jobs.map((j, i) => (
+                <li key={i} className="border-b last:border-b-0 pb-8 last:pb-0">
+                  {/* Job Details */}
+                  <article
+                    aria-labelledby={`job-${i}-role job-${i}-company`}
+                    aria-describedby={`job-${i}-desc`}
+                  >
+                    <header className="flex items-center space-x-4">
+                      {/* company logo is decorative here because company name is visible nearby */}
+                      <Image
+                        src={j.logo}
+                        alt={j.company}
+                        aria-hidden="true"
+                        width={40}
+                        height={40}
+                        className="rounded-md border shadow-md object-cover"
+                      />
+
+                      <div>
+                        <h3 id={`job-${i}-role`} className="font-semibold">
+                          {j.role}
+                        </h3>
+                        <p
+                          id={`job-${i}-company`}
+                          className="text-sm text-muted-foreground"
+                        >
+                          {j.company}
+                        </p>
+                      </div>
+                    </header>
+
+                    <p className="text-xs text-muted-foreground mt-2 flex items-center">
+                      <CalendarDays
+                        aria-hidden="true"
+                        className="size-3 mr-2"
+                      />
+                      <time aria-label={`Duration ${j.duration}`}>
+                        {j.duration}
+                      </time>
+                    </p>
+
+                    <p id={`job-${i}-desc`} className="text-sm mt-2">
+                      {j.description}
+                    </p>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          </section>
         </CardContent>
       </Card>
     </>
