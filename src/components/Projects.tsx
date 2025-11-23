@@ -48,6 +48,7 @@ export const Projects = () => {
                     </span>
                   </div>
                   <Link
+                    target={p.title}
                     href={p.link}
                     className="flex items-center gap-2 text-sm text-primary hover:underline"
                   >
