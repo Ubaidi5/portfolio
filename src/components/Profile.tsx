@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button, Image } from "@/components/ui";
 import { ContactDialog } from "@/components/ContactDialog";
 
-import profileImage from "@public/images/profile-picture.webp";
+import profileImage from "@public/images/ubaid-hussain.png";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const socials = [
@@ -38,15 +38,16 @@ export const Profile: React.FC = () => {
             <div className="w-full flex flex-row justify-between items-top ">
               <div className="flex flex-row md:flex-col items-center md:items-start w-full gap-4">
                 <div className="rounded-full w-16 md:w-full aspect-square overflow-hidden">
-                  <Image
-                    className="w-full h-full object-cover"
-                    src={profileImage}
-                    alt="Ubaid Hussain"
-                    style={{ objectPosition: "0 16%", scale: 1.3 }}
-                    width={400}
-                    height={400}
-                    placeholder="blur"
-                  />
+                  <a href="https://ubaidhussain.me">
+                    <Image
+                      className="w-full h-full object-cover"
+                      src={profileImage}
+                      alt="Ubaid Hussain"
+                      width={400}
+                      height={400}
+                      placeholder="blur"
+                    />
+                  </a>
                 </div>
                 <div className="flex flex-col items-start justify-center">
                   <h1 className="font-bold md:mt-4 text-xl md:text-2xl">
