@@ -98,13 +98,19 @@ export default function WorkPage() {
           <ol className="lg:col-span-8">
             {experience.map((job, i) => (
               <Reveal as="li" key={job.company} delay={i * 0.04} className="grid gap-4 border-t border-line py-8 first:border-t-0 first:pt-0 sm:grid-cols-[3.5rem_1fr] sm:gap-6 sm:py-10">
-                <Image
-                  src={job.logo}
-                  alt=""
-                  width={56}
-                  height={56}
-                  className="size-12 rounded-xl border border-line object-cover sm:size-14"
-                />
+                {job.logo ? (
+                  <Image
+                    src={job.logo}
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="size-12 rounded-xl border border-line object-cover sm:size-14"
+                  />
+                ) : (
+                  <span aria-hidden className="grid size-12 place-items-center rounded-xl border border-line bg-ink-2 font-serif text-2xl text-gold sm:size-14">
+                    {job.company[0]}
+                  </span>
+                )}
                 <div>
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
                     <h3 className="text-xl font-medium text-bone">

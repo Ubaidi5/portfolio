@@ -111,6 +111,17 @@ export const experience = [
     ],
   },
   {
+    role: "Frontend Engineer · Long-term contract",
+    company: "ZeroSlip",
+    logo: undefined,
+    period: "2022 — Present",
+    place: "Part-time · Remote",
+    points: [
+      "Built the ZeroSlip merchant dashboard end to end, alongside full-time roles.",
+      "Four years as their go-to frontend engineer for smart receipts, analytics and RewardBee.",
+    ],
+  },
+  {
     role: "Team Lead & Senior Software Developer",
     company: "SparkoSol",
     logo: "/images/sparko_sol_logo.jpg",
