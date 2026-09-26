@@ -79,7 +79,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line md:hidden"
+        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ink md:hidden"
       >
         <nav aria-label="Mobile" className="container-page flex h-full flex-col justify-between py-8">
           <ul className="space-y-1">

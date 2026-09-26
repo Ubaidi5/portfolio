@@ -1,16 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 
 /** A paragraph whose words light up as the reader scrolls through it. */
 export function ScrollText({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "end 45%"] });
   const words = text.split(" ");
-
-  if (reduce) return <p className={className}>{text}</p>;
 
   return (
     <p ref={ref} className={className}>

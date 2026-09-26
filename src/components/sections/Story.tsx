@@ -39,9 +39,9 @@ export function Story() {
 
           <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-24 md:grid-cols-4">
             {facts.map((f, i) => (
-              <Reveal key={f.label} delay={i * 0.08} className="flex flex-col-reverse gap-3 bg-ink p-5 sm:p-6">
+              <Reveal key={f.label} delay={i * 0.08} className="grid content-start gap-3 bg-ink p-5 sm:p-6">
                 <dt className="text-sm leading-snug text-mute">{f.label}</dt>
-                <dd className="font-serif text-5xl leading-none tracking-tight text-bone sm:text-6xl">{f.value}</dd>
+                <dd className="row-start-1 font-serif text-5xl leading-none tracking-tight text-bone sm:text-6xl">{f.value}</dd>
               </Reveal>
             ))}
           </dl>

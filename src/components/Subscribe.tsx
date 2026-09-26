@@ -95,7 +95,7 @@ export function SubscribeForm({ className, autoFocus }: { className?: string; au
           required
           autoComplete="email"
           placeholder="you@company.com"
-          className="h-12 min-w-0 flex-1 rounded-full border border-line-strong bg-transparent px-5 text-sm text-bone placeholder:text-mute focus:border-gold focus:outline-none"
+          className="h-12 w-full min-w-0 rounded-full sm:flex-1 border border-line-strong bg-transparent px-5 text-sm text-bone placeholder:text-mute focus:border-gold focus:outline-none"
         />
         <button
           type="submit"

@@ -96,7 +96,7 @@ export default async function StoryPage({ params }: Props) {
         )}
 
         <div className="container-page mt-14 max-w-4xl sm:mt-20">
-          <div className="prose prose-lg prose-invert max-w-[68ch] prose-headings:font-serif prose-headings:font-normal prose-headings:tracking-tight prose-h2:text-4xl prose-p:text-bone-2 prose-a:text-gold prose-a:underline-offset-4 prose-blockquote:border-gold prose-blockquote:font-serif prose-blockquote:text-2xl prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-bone prose-strong:text-bone prose-code:text-bone prose-img:rounded-2xl prose-hr:border-line">
+          <div className="prose prose-lg prose-invert max-w-[68ch] prose-headings:font-serif prose-headings:font-normal prose-headings:tracking-tight prose-h2:text-4xl prose-p:text-bone-2 prose-a:text-gold prose-a:underline-offset-4 prose-blockquote:border-gold prose-blockquote:font-serif prose-blockquote:text-2xl prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-bone prose-strong:text-bone prose-code:text-bone prose-code:before:content-none prose-code:after:content-none prose-img:rounded-2xl prose-hr:border-line">
             <MDXRemote source={content} />
           </div>
 

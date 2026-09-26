@@ -15,8 +15,10 @@ export function Hero() {
 
       <div className="container-page flex flex-1 flex-col justify-center py-12">
         <Reveal>
-          <p className="eyebrow">
-            {site.name} <span className="mx-2 text-line-strong">/</span> {site.role}
+          <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1">
+            <span>{site.name}</span>
+            <span aria-hidden className="hidden text-line-strong sm:inline">/</span>
+            <span>{site.role}</span>
           </p>
         </Reveal>
 

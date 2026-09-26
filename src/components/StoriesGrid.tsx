@@ -22,7 +22,7 @@ export function StoriesGrid({ stories, limit }: { stories: StoryMeta[]; limit?: 
 
   return (
     <div>
-      <div role="tablist" aria-label="Filter stories" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0">
+      <div role="tablist" aria-label="Filter stories" className="flex flex-wrap gap-2">
         {filters.map((f) => {
           const selected = active === f.key;
           return (
@@ -32,7 +32,7 @@ export function StoriesGrid({ stories, limit }: { stories: StoryMeta[]; limit?: 
               aria-selected={selected}
               onClick={() => setActive(f.key)}
               className={cn(
-                "relative isolate flex h-10 shrink-0 items-center gap-2 rounded-full px-5 text-sm transition-colors",
+                "relative isolate flex h-10 shrink-0 items-center gap-2 rounded-full px-4 text-sm sm:px-5 transition-colors",
                 selected ? "text-ink" : "text-bone-2 hover:text-bone",
               )}
             >
