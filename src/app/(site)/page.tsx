@@ -8,6 +8,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { personId, websiteId } from "@/lib/seo";
 import { site } from "@/content/site";
 
+// Safety net: admin saves refresh these pages instantly; this catches anything missed (e.g. a build without database access).
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <>

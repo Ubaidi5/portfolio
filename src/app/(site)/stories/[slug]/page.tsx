@@ -9,6 +9,9 @@ import { SubscribeForm } from "@/components/Subscribe";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
 
+// Safety net: admin saves refresh these pages instantly; this catches anything missed (e.g. a build without database access).
+export const revalidate = 3600;
+
 type Props = { params: Promise<{ slug: string }> };
 
 // New stories published from the admin render on first visit, then stay cached until the next edit.

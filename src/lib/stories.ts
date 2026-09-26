@@ -95,7 +95,7 @@ const toMeta = (story: Story): StoryMeta => {
 
 // ---------- Public reads (cached, invalidated by the "stories" tag on every admin write) ----------
 
-export const getStories = unstable_cache(
+const cachedStories = unstable_cache(
   async (): Promise<StoryMeta[]> => {
     if (!hasDatabase()) return [];
     const docs = await (await collection()).find({ status: "published" }).sort({ date: -1 }).toArray();
@@ -105,7 +105,7 @@ export const getStories = unstable_cache(
   { tags: [STORIES_TAG] },
 );
 
-export const getStory = unstable_cache(
+const cachedStory = unstable_cache(
   async (slug: string): Promise<Story | null> => {
     if (!hasDatabase() || !/^[a-z0-9-]+$/.test(slug)) return null;
     const doc = await (await collection()).findOne({ slug, status: "published" });
@@ -114,6 +114,26 @@ export const getStory = unstable_cache(
   ["published-story"],
   { tags: [STORIES_TAG] },
 );
+
+// A database outage (or a build machine the database doesn't allow) must never take the site down:
+// log it and render without stories. Failures aren't cached, so the next request retries.
+export async function getStories(): Promise<StoryMeta[]> {
+  try {
+    return await cachedStories();
+  } catch (error) {
+    console.error("Stories: could not load from MongoDB", error);
+    return [];
+  }
+}
+
+export async function getStory(slug: string): Promise<Story | null> {
+  try {
+    return await cachedStory(slug);
+  } catch (error) {
+    console.error(`Stories: could not load "${slug}" from MongoDB`, error);
+    return null;
+  }
+}
 
 // ---------- Admin reads and writes (never cached) ----------
 

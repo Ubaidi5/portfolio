@@ -5,6 +5,9 @@ import { RevealWords } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
 
+// Safety net: admin saves refresh these pages instantly; this catches anything missed (e.g. a build without database access).
+export const revalidate = 3600;
+
 export const metadata = pageMetadata({
   title: "Stories",
   description: "Travel notes, tech lessons and life updates from Ubaid Hussain, a frontend engineer from Karachi.",
