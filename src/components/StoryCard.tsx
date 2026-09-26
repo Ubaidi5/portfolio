@@ -34,7 +34,7 @@ export function StoryCard({ story, className, priority }: { story: StoryMeta; cl
             </span>
           </div>
         )}
-        {story.draft && (
+        {story.status === "draft" && (
           <span className="absolute right-3 top-3 rounded-full bg-gold px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-ink">
             Draft
           </span>

@@ -3,12 +3,6 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
-import { JsonLd } from "@/components/JsonLd";
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { SubscribeProvider } from "@/components/Subscribe";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { personJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
@@ -74,20 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
       <body className="grain">
-        <JsonLd data={[personJsonLd(), websiteJsonLd()]} />
-        <SmoothScroll>
-          <SubscribeProvider>
-            <a
-              href="#main"
-              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-full focus:bg-bone focus:px-4 focus:py-2 focus:text-ink"
-            >
-              Skip to content
-            </a>
-            <Header />
-            <main id="main">{children}</main>
-            <Footer />
-          </SubscribeProvider>
-        </SmoothScroll>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

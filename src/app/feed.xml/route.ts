@@ -2,13 +2,11 @@ import { getStories } from "@/lib/stories";
 import { site } from "@/content/site";
 import { absoluteUrl } from "@/lib/seo";
 
-export const dynamic = "force-static";
 
 const esc = (s: string) => s.replace(/[<>&'"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" })[c]!);
 
-export function GET() {
-  const items = getStories()
-    .filter((s) => !s.draft)
+export async function GET() {
+  const items = (await getStories())
     .map(
       (s) => `
     <item>

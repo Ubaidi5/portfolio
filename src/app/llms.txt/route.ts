@@ -2,11 +2,10 @@ import { experience, projects, site } from "@/content/site";
 import { getStories } from "@/lib/stories";
 import { absoluteUrl } from "@/lib/seo";
 
-export const dynamic = "force-static";
 
 /** A plain-text summary for AI assistants and answer engines (llmstxt.org). */
-export function GET() {
-  const stories = getStories().filter((s) => !s.draft);
+export async function GET() {
+  const stories = await getStories();
   const body = `# ${site.name}
 
 > ${site.role} based in ${site.location}. ${site.description}

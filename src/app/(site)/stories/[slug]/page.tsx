@@ -1,41 +1,42 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { categoryLabel, formatDate, getStories, getStory } from "@/lib/stories";
 import { site } from "@/content/site";
 import { StoryCard } from "@/components/StoryCard";
+import { Markdown } from "@/components/Markdown";
 import { SubscribeForm } from "@/components/Subscribe";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export const dynamicParams = false;
+// New stories published from the admin render on first visit, then stay cached until the next edit.
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return getStories().map((s) => ({ slug: s.slug }));
+export async function generateStaticParams() {
+  return (await getStories()).map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const story = getStory(slug);
+  const story = await getStory(slug);
   if (!story) return {};
   return pageMetadata({
-    title: story.meta.title,
-    description: story.meta.excerpt,
+    title: story.title,
+    description: story.excerpt,
     path: `/stories/${slug}`,
     type: "article",
-    publishedTime: story.meta.date,
+    publishedTime: story.date,
   });
 }
 
 export default async function StoryPage({ params }: Props) {
   const { slug } = await params;
-  const story = getStory(slug);
+  const story = await getStory(slug);
   if (!story) notFound();
-  const { meta, content } = story;
-  const more = getStories()
+  const { content, ...meta } = story;
+  const more = (await getStories())
     .filter((s) => s.slug !== slug)
     .sort((a, b) => Number(b.category === meta.category) - Number(a.category === meta.category))
     .slice(0, 2);
@@ -56,7 +57,7 @@ export default async function StoryPage({ params }: Props) {
             url: absoluteUrl(`/stories/${slug}`),
             mainEntityOfPage: absoluteUrl(`/stories/${slug}`),
             datePublished: meta.date,
-            dateModified: meta.date,
+            dateModified: meta.updatedAt,
             articleSection: categoryLabel[meta.category],
             image: absoluteUrl(`/stories/${slug}/opengraph-image`),
             author: { "@id": personId, "@type": "Person", name: site.name, url: site.url },
@@ -96,9 +97,7 @@ export default async function StoryPage({ params }: Props) {
         )}
 
         <div className="container-page mt-14 max-w-4xl sm:mt-20">
-          <div className="prose prose-lg prose-invert max-w-[68ch] prose-headings:font-serif prose-headings:font-normal prose-headings:tracking-tight prose-h2:text-4xl prose-p:text-bone-2 prose-a:text-gold prose-a:underline-offset-4 prose-blockquote:border-gold prose-blockquote:font-serif prose-blockquote:text-2xl prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-bone prose-strong:text-bone prose-code:text-bone prose-code:before:content-none prose-code:after:content-none prose-img:rounded-2xl prose-hr:border-line">
-            <MDXRemote source={content} />
-          </div>
+          <Markdown>{content}</Markdown>
 
           <div className="mt-20 flex items-center gap-4 border-t border-line pt-10">
             <Image src={site.photo} alt="" width={56} height={56} className="size-14 rounded-full object-cover object-top" />

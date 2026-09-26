@@ -11,8 +11,8 @@ export const metadata = pageMetadata({
   path: "/stories",
 });
 
-export default function StoriesPage() {
-  const stories = getStories();
+export default async function StoriesPage() {
+  const stories = await getStories();
   return (
     <>
       <JsonLd

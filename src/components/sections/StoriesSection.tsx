@@ -3,8 +3,8 @@ import { getStories } from "@/lib/stories";
 import { StoriesGrid } from "../StoriesGrid";
 import { SubscribeButton } from "../Subscribe";
 
-export function StoriesSection() {
-  const stories = getStories();
+export async function StoriesSection() {
+  const stories = await getStories();
   if (stories.length === 0) return null;
 
   return (
