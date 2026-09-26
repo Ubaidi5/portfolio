@@ -1,9 +1,12 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { JsonLd } from "@/components/JsonLd";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { SubscribeProvider } from "@/components/Subscribe";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,6 +25,8 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </SubscribeProvider>
       </SmoothScroll>
+      {/* Public pages only, so admin visits stay out of the numbers. */}
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </>
   );
 }

@@ -2,6 +2,8 @@ import { getStories } from "@/lib/stories";
 import { site } from "@/content/site";
 import { absoluteUrl } from "@/lib/seo";
 
+// Rebuilt in the background at most hourly, and on every admin save, so crawlers never wait on the database.
+export const revalidate = 3600;
 
 const esc = (s: string) => s.replace(/[<>&'"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" })[c]!);
 
