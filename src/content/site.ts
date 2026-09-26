@@ -28,7 +28,7 @@ export const nav = [
 
 export const facts = [
   { value: "6+", label: "years shipping for the web" },
-  { value: "3", label: "continents my clients call home" },
+  { value: "4", label: "continents my clients call home" },
   { value: "1", label: "startup built and sold" },
   { value: "∞", label: "instant noodles, strictly for deadlines" },
 ] as const;
@@ -114,11 +114,11 @@ export const experience = [
     role: "Frontend Engineer · Long-term contract",
     company: "ZeroSlip",
     logo: undefined,
-    period: "2022 — Present",
+    period: "Nov 2021 — Present",
     place: "Part-time · Remote",
     points: [
       "Built the ZeroSlip merchant dashboard end to end, alongside full-time roles.",
-      "Four years as their go-to frontend engineer for smart receipts, analytics and RewardBee.",
+      "Their go-to frontend engineer since 2021 for smart receipts, analytics and RewardBee.",
     ],
   },
   {
