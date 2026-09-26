@@ -1,78 +1,53 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Create a transporter using Zoho SMTP
-const transporter = nodemailer.createTransport({
-  host: "smtp.zoho.com",
-  port: 465,
-  secure: true, // use SSL
-  auth: {
-    user: process.env.EMAIL_USER, // Your Zoho email address
-    pass: process.env.EMAIL_PASSWORD, // Your Zoho email password or app-specific password
-  },
-});
+const escape = (value: unknown) =>
+  String(value ?? "")
+    .slice(0, 5000)
+    .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
+const isEmail = (v: unknown): v is string => typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && v.length < 255;
 
 export async function POST(request: Request) {
+  const body = await request.json().catch(() => null);
+  if (!body) return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+
+  // Honeypot field: real visitors never fill it.
+  if (body.company) return NextResponse.json({ ok: true });
+
+  const { name, email, message, timeZone } = body;
+  if (!name || !message || !isEmail(email)) {
+    return NextResponse.json({ error: "Name, a valid email and a message are required" }, { status: 400 });
+  }
+
+  const { EMAIL_USER, EMAIL_PASSWORD, CONTACT_EMAIL } = process.env;
+  if (!EMAIL_USER || !EMAIL_PASSWORD || !CONTACT_EMAIL) {
+    console.error("Contact form: EMAIL_USER, EMAIL_PASSWORD or CONTACT_EMAIL is not set");
+    return NextResponse.json({ error: "Contact form is not configured" }, { status: 503 });
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.zoho.com",
+    port: 465,
+    secure: true,
+    auth: { user: EMAIL_USER, pass: EMAIL_PASSWORD },
+  });
+
   try {
-    const body = await request.json();
-    const { email, message, date, timezone, country, city, browser, device } =
-      body;
-
-    // Validate required fields
-    if (!email || !message) {
-      return NextResponse.json(
-        { error: "Email and message are required" },
-        { status: 400 }
-      );
-    }
-
-    // Create email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.CONTACT_EMAIL,
-      subject: `New Contact Form Submission from ${email}`,
+    await transporter.sendMail({
+      from: EMAIL_USER,
+      to: CONTACT_EMAIL,
+      replyTo: email,
+      subject: `New message from ${String(name).slice(0, 80)}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px;">
-          <h2 style="color: #333;">New Contact Form Submission</h2>
-          
-          <div style="margin-bottom: 20px;">
-            <h3 style="color: #555; margin-bottom: 5px;">Message</h3>
-            <p style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; white-space: pre-wrap;">${message}</p>
-          </div>
-          
-          <div style="margin-bottom: 20px;">
-            <h3 style="color: #555; margin-bottom: 5px;">Contact Information</h3>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Date:</strong> ${date}</p>
-            <p><strong>Timezone:</strong> ${timezone}</p>
-          </div>
-          
-          <div style="margin-bottom: 20px;">
-            <h3 style="color: #555; margin-bottom: 5px;">User Information</h3>
-            <p><strong>Location:</strong> ${city}, ${country}</p>
-            <p><strong>Browser:</strong> ${browser}</p>
-            <p><strong>Device:</strong> ${device}</p>
-          </div>
-          
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #777;">
-            <p>This email was sent from your portfolio website contact form.</p>
-          </div>
-        </div>
-      `,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
-
-    return NextResponse.json(
-      { message: "Email sent successfully" },
-      { status: 200 }
-    );
+        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;padding:24px">
+          <p style="color:#666;margin:0 0 16px">From <strong>${escape(name)}</strong> &lt;${escape(email)}&gt;${timeZone ? ` · ${escape(timeZone)}` : ""}</p>
+          <p style="white-space:pre-wrap;line-height:1.6;background:#f7f7f5;padding:16px;border-radius:8px">${escape(message)}</p>
+        </div>`,
+    });
+    return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json(
-      { error: "Failed to send email" },
-      { status: 500 }
-    );
+    console.error("Contact form: failed to send", error);
+    return NextResponse.json({ error: "Failed to send" }, { status: 500 });
   }
 }

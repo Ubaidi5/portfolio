@@ -1,42 +1,16 @@
 import Link from "next/link";
-import type { Metadata } from "next";
-
-import { ArrowLeft } from "lucide-react";
-
-import {
-  Card,
-  CardTitle,
-  CardFooter,
-  CardHeader,
-  CardContent,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/";
-
-export const metadata: Metadata = {
-  title: "404 - Page Not Found",
-};
 
 export default function NotFound() {
   return (
-    <div className="bg-background min-h-screen flex items-center justify-center">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center">404</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-center text-muted-foreground">
-            Oops! The page you&apos;re looking for doesn&apos;t exist.
-          </p>
-        </CardContent>
-        <CardFooter className="flex justify-center">
-          <Button asChild>
-            <Link href="/" className="inline-flex items-center">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Link>
-          </Button>
-        </CardFooter>
-      </Card>
-    </div>
+    <section className="container-page flex min-h-svh flex-col justify-center py-32">
+      <p className="eyebrow">404</p>
+      <h1 className="mt-4 max-w-[14ch] font-serif text-display">
+        This page took a <em className="text-gold">wrong turn.</em>
+      </h1>
+      <p className="mt-8 max-w-md text-bone-2">Happens to the best of us, usually on the way to somewhere interesting.</p>
+      <Link href="/" className="mt-10 inline-flex h-12 w-fit items-center rounded-full bg-bone px-6 text-sm font-medium text-ink transition-colors hover:bg-gold">
+        Back to the start
+      </Link>
+    </section>
   );
 }
