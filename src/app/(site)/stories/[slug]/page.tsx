@@ -5,7 +5,7 @@ import { categoryLabel, formatDate, getStories, getStory } from "@/lib/stories";
 import { site } from "@/content/site";
 import { StoryCard } from "@/components/StoryCard";
 import { Markdown } from "@/components/Markdown";
-import { SubscribeForm } from "@/components/Subscribe";
+import { SubscribeForm, SubscribeOnly } from "@/components/Subscribe";
 import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
 
@@ -110,11 +110,13 @@ export default async function StoryPage({ params }: Props) {
             </p>
           </div>
 
+          <SubscribeOnly>
           <div className="mt-12 rounded-3xl border border-line bg-ink-2 p-6 sm:p-10">
             <p className="font-serif text-3xl tracking-tight text-bone">Enjoyed this one?</p>
             <p className="mt-2 text-bone-2">The next story lands in your inbox the day I publish it.</p>
             <SubscribeForm className="mt-6" />
           </div>
+          </SubscribeOnly>
         </div>
       </article>
 

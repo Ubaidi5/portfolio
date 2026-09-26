@@ -6,11 +6,19 @@ import { cn } from "@/lib/cn";
 
 type Status = "idle" | "loading" | "done" | "error";
 
-const SubscribeContext = createContext<() => void>(() => {});
+const SubscribeContext = createContext<{ open: () => void; enabled: boolean }>({ open: () => {}, enabled: false });
 export const useSubscribe = () => useContext(SubscribeContext);
 
-/** Owns the single subscribe dialog. It opens only when a visitor asks for it. */
-export function SubscribeProvider({ children }: { children: React.ReactNode }) {
+/** Renders its children only when email subscriptions are configured. */
+export function SubscribeOnly({ children }: { children: React.ReactNode }) {
+  return useSubscribe().enabled ? <>{children}</> : null;
+}
+
+/**
+ * Owns the single subscribe dialog. It opens only when a visitor asks for it.
+ * With `enabled` false (no newsletter configured) every subscribe entry point stays hidden.
+ */
+export function SubscribeProvider({ children, enabled }: { children: React.ReactNode; enabled: boolean }) {
   const ref = useRef<HTMLDialogElement>(null);
   const lenis = useLenis();
   const open = useCallback(() => {
@@ -26,40 +34,43 @@ export function SubscribeProvider({ children }: { children: React.ReactNode }) {
   }, [lenis]);
 
   return (
-    <SubscribeContext.Provider value={open}>
+    <SubscribeContext.Provider value={{ open, enabled }}>
       {children}
-      <dialog
-        ref={ref}
-        aria-labelledby="subscribe-title"
-        className="m-auto w-[calc(100%-2rem)] max-w-md rounded-2xl border border-line-strong bg-ink-2 p-0 text-bone shadow-2xl backdrop:bg-ink/70 backdrop:backdrop-blur-sm"
-        onClick={(e) => e.target === e.currentTarget && e.currentTarget.close()}
-      >
-        <div className="p-6 sm:p-8">
-          <div className="flex items-start justify-between gap-6">
-            <p className="eyebrow">Stories by email</p>
-            <button
-              type="button"
-              onClick={() => ref.current?.close()}
-              className="-mr-2 -mt-2 grid size-9 place-items-center rounded-full text-mute transition-colors hover:bg-white/5 hover:text-bone"
-              aria-label="Close"
-            >
-              <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
-            </button>
+      {enabled && (
+        <dialog
+          ref={ref}
+          aria-labelledby="subscribe-title"
+          className="m-auto w-[calc(100%-2rem)] max-w-md rounded-2xl border border-line-strong bg-ink-2 p-0 text-bone shadow-2xl backdrop:bg-ink/70 backdrop:backdrop-blur-sm"
+          onClick={(e) => e.target === e.currentTarget && e.currentTarget.close()}
+        >
+          <div className="p-6 sm:p-8">
+            <div className="flex items-start justify-between gap-6">
+              <p className="eyebrow">Stories by email</p>
+              <button
+                type="button"
+                onClick={() => ref.current?.close()}
+                className="-mr-2 -mt-2 grid size-9 place-items-center rounded-full text-mute transition-colors hover:bg-white/5 hover:text-bone"
+                aria-label="Close"
+              >
+                <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              </button>
+            </div>
+            <h2 id="subscribe-title" className="mt-4 font-serif text-4xl leading-none tracking-tight">
+              When I write, <em className="text-gold">you&rsquo;ll know.</em>
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-bone-2">
+              New stories about travel, tech and building things, sent the day they go up. Around one or two a month, never anything else.
+            </p>
+            <SubscribeForm className="mt-6" autoFocus />
           </div>
-          <h2 id="subscribe-title" className="mt-4 font-serif text-4xl leading-none tracking-tight">
-            When I write, <em className="text-gold">you&rsquo;ll know.</em>
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-bone-2">
-            New stories about travel, tech and building things, sent the day they go up. Around one or two a month, never anything else.
-          </p>
-          <SubscribeForm className="mt-6" autoFocus />
-        </div>
-      </dialog>
+        </dialog>
+      )}
     </SubscribeContext.Provider>
   );
 }
 
 export function SubscribeForm({ className, autoFocus }: { className?: string; autoFocus?: boolean }) {
+  const { enabled } = useSubscribe();
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -73,6 +84,8 @@ export function SubscribeForm({ className, autoFocus }: { className?: string; au
     }).catch(() => null);
     setStatus(res?.ok ? "done" : "error");
   }
+
+  if (!enabled) return null;
 
   if (status === "done") {
     return (
@@ -123,7 +136,8 @@ export function SubscribeButton({
   children: React.ReactNode;
   onClick?: () => void;
 }) {
-  const open = useSubscribe();
+  const { open, enabled } = useSubscribe();
+  if (!enabled) return null;
   return (
     <button
       type="button"

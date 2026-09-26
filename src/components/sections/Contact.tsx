@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 import { ContactForm } from "../ContactForm";
-import { SubscribeForm } from "../Subscribe";
+import { SubscribeForm, SubscribeOnly } from "../Subscribe";
 
 export function Contact() {
   return (
@@ -45,6 +45,7 @@ export function Contact() {
           </div>
         </div>
 
+        <SubscribeOnly>
         <div className="mt-24 grid gap-8 rounded-3xl border border-line bg-ink-2 p-6 sm:mt-32 sm:p-10 md:grid-cols-2 md:items-center">
           <div>
             <p className="font-serif text-3xl tracking-tight text-bone sm:text-4xl">Not ready to talk yet?</p>
@@ -54,6 +55,7 @@ export function Contact() {
           </div>
           <SubscribeForm />
         </div>
+        </SubscribeOnly>
       </div>
     </section>
   );
