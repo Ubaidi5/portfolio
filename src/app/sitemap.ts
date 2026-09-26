@@ -1,48 +1,19 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { getStories } from "@/lib/stories";
+import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://ubaidhussain.com";
-
-  // Define your static routes
-  const routes = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/blogs`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+  const stories = getStories().filter((s) => !s.draft);
+  const latest = stories[0]?.date ?? new Date().toISOString();
+  return [
+    { url: absoluteUrl("/"), lastModified: latest, changeFrequency: "weekly", priority: 1 },
+    { url: absoluteUrl("/work"), changeFrequency: "monthly", priority: 0.9 },
+    { url: absoluteUrl("/stories"), lastModified: latest, changeFrequency: "weekly", priority: 0.8 },
+    ...stories.map((s) => ({
+      url: absoluteUrl(`/stories/${s.slug}`),
+      lastModified: s.date,
       changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
+      priority: 0.7,
+    })),
   ];
-
-  // In a real application, you would fetch blog posts from your CMS or database
-  // and add them to the sitemap dynamically
-  // Example:
-  // const blogPosts = await fetchBlogPosts();
-  // const blogRoutes = blogPosts.map(post => ({
-  //   url: `${baseUrl}/blogs/${post.slug}`,
-  //   lastModified: new Date(post.updatedAt),
-  //   changeFrequency: 'monthly' as const,
-  //   priority: 0.7,
-  // }));
-  // return [...routes, ...blogRoutes];
-
-  return routes;
 }

@@ -1,75 +1,51 @@
-# Portfolio Website
+# ubaidhussain.me
 
-A modern portfolio website built with Next.js, React, and Tailwind CSS.
+Personal site of Ubaid Hussain: a short, living story rather than a template portfolio.
 
-## Features
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Motion · Lenis · MDX
 
-- Responsive design
-- Dark mode support
-- Contact form with email notifications
-- Project showcase
-- Skills and experience sections
+## Content
 
-## Getting Started
+| What | Where |
+| --- | --- |
+| Profile, facts, work, experience, skills, testimonials | `src/content/site.ts` |
+| Stories (travel / tech / life) | `content/stories/*.mdx` |
+| Photos for stories | `public/stories/` |
 
-### Prerequisites
+Story frontmatter:
 
-- Node.js 18.x or later
-- npm or yarn
+```yaml
+title: "Title"
+excerpt: "One or two sentences for cards, SEO and the RSS feed."
+category: travel # travel | tech | life
+date: 2026-09-20
+cover: /stories/photo.jpg   # optional
+coverAlt: "What the photo shows"
+draft: true                 # drafts show in development only
+```
 
-### Installation
+Testimonials marked `placeholder: true` and stories marked `draft: true` never render in production.
 
-1. Clone the repository
+## Environment
+
+Copy `.env.example` to `.env.local` and fill it in:
+
+- `NEXT_PUBLIC_SITE_URL`: canonical URL, used for metadata, sitemap and JSON-LD
+- `EMAIL_USER`, `EMAIL_PASSWORD`, `CONTACT_EMAIL`: Zoho SMTP for the contact form
+- `BUTTONDOWN_API_KEY`: newsletter subscriptions. In Buttondown, enable RSS-to-email on `/feed.xml` so subscribers get every new story automatically.
+
+## SEO and AI discoverability
+
+- Per-page metadata, canonical URLs and generated Open Graph images
+- JSON-LD: `Person` (with `sameAs`), `WebSite`, `ProfilePage`, `Blog`, `BlogPosting`, `BreadcrumbList`
+- `/sitemap.xml`, `/robots.txt` (AI crawlers allowed), `/feed.xml`, `/llms.txt`
+- Old URLs (`/blog`, `/blogs/*`, `/projects`, `/privacy`, `/terms`) permanently redirect
+
+## Scripts
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
+npm run dev        # local development
+npm run typecheck
+npm run lint
+npm run build
 ```
-
-2. Install dependencies
-
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Set up environment variables
-   Create a `.env.local` file in the root directory with the following variables:
-
-```
-EMAIL_USER=your_zoho_email@zoho.com
-EMAIL_PASSWORD=your_zoho_email_password_or_app_specific_password
-```
-
-### Setting up Zoho Email for Contact Form
-
-To enable the contact form to send emails, you need to set up a Zoho email account:
-
-1. Create a Zoho Mail account at [https://www.zoho.com/mail/](https://www.zoho.com/mail/)
-2. Set up your email address (e.g., yourname@zoho.com)
-3. For security, it's recommended to create an app-specific password:
-   - Log in to your Zoho Mail account
-   - Go to Settings > Security > App Passwords
-   - Create a new app password for your portfolio website
-   - Use this app password in your `.env.local` file instead of your main account password
-
-### Running the Development Server
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Deployment
-
-The easiest way to deploy this portfolio is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
-
-Don't forget to add your environment variables in the Vercel project settings.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

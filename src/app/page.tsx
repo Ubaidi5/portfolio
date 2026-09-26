@@ -1,48 +1,32 @@
-import { AboutMe } from "@/components/AboutMe";
-import { Projects } from "@/components/Projects";
-import { Experience } from "@/components/Experience";
-import { Profile } from "@/components/Profile";
-import { Skills } from "@/components/Skills";
-import { generateBaseMetadata } from "@/lib/metadata";
-
-// Calculate years of experience
-function calculateYearsOfExperience() {
-  const startDate = new Date("2019-11-01");
-  const currentDate = new Date();
-  const diffTime = Math.abs(currentDate.getTime() - startDate.getTime());
-  const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365));
-  return diffYears;
-}
-
-export const metadata = generateBaseMetadata({
-  title: "Ubaid Hussain - Web Developer Portfolio",
-  description:
-    "Ubaid Hussain | MERN Stack Developer | Explore my innovative web projects built with React, Next.js, and Node.js.",
-  image: "/favicons/og-image.webp",
-});
-
-// Enable ISR with monthly revalidation
-export const revalidate = 2592000; // 30 days in seconds
+import { Hero } from "@/components/sections/Hero";
+import { Story } from "@/components/sections/Story";
+import { Crafts } from "@/components/sections/Crafts";
+import { StoriesSection } from "@/components/sections/StoriesSection";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { Contact } from "@/components/sections/Contact";
+import { JsonLd } from "@/components/JsonLd";
+import { personId, websiteId } from "@/lib/seo";
+import { site } from "@/content/site";
 
 export default function Home() {
-  const yearsOfExperience = calculateYearsOfExperience();
-
   return (
-    <div className="bg-background min-h-screen">
-      <div className="container max-w-screen-lg mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <aside className="md:col-span-1">
-            <Profile />
-            <Skills />
-          </aside>
-
-          <main className="md:col-span-2">
-            <AboutMe yearsOfExperience={yearsOfExperience} />
-            <Projects />
-            <Experience />
-          </main>
-        </div>
-      </div>
-    </div>
+    <>
+      <JsonLd
+        data={{
+          "@type": "ProfilePage",
+          "@id": `${site.url}/#profile`,
+          url: site.url,
+          name: `${site.name} · ${site.role}`,
+          isPartOf: { "@id": websiteId },
+          mainEntity: { "@id": personId },
+        }}
+      />
+      <Hero />
+      <Story />
+      <Crafts />
+      <StoriesSection />
+      <Testimonials />
+      <Contact />
+    </>
   );
 }
