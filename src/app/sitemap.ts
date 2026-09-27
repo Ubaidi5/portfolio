@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { getStories } from "@/lib/stories";
 import { absoluteUrl } from "@/lib/seo";
 
+// Rebuilt in the background at most hourly, and on every admin save, so crawlers never wait on the database.
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const stories = await getStories();
   const latest = stories[0]?.date ?? new Date().toISOString();

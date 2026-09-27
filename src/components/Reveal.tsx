@@ -26,11 +26,12 @@ export function Reveal({ children, className, delay = 0, as = "div" }: Props) {
   );
 }
 
-/** Splits a line into words that rise into place one after another. */
+/** Splits a line into words that rise into place one after another. Screen readers get the plain text. */
 export function RevealWords({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
   const words = text.split(" ");
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
       {words.map((word, i) => (
         <span key={i} aria-hidden className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
           <motion.span

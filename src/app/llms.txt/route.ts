@@ -2,6 +2,8 @@ import { experience, projects, site } from "@/content/site";
 import { getStories } from "@/lib/stories";
 import { absoluteUrl } from "@/lib/seo";
 
+// Rebuilt in the background at most hourly, and on every admin save, so crawlers never wait on the database.
+export const revalidate = 3600;
 
 /** A plain-text summary for AI assistants and answer engines (llmstxt.org). */
 export async function GET() {

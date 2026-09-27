@@ -48,8 +48,8 @@ export const crafts = [
   },
   {
     index: "03",
-    title: "Platforms rebuilt to be fast",
-    body: "Moved InsuranceMarket.ae from WordPress to Next.js and tuned it until pages felt instant, without losing what already ranked.",
+    title: "Helping platforms get faster",
+    body: "At InsuranceMarket.ae I'm part of the team moving the site from WordPress to Next.js, with a focus on speed and keeping what already ranks.",
     tags: ["Next.js", "Performance", "SEO"],
   },
   {
@@ -105,9 +105,9 @@ export const experience = [
     period: "Feb 2025 — Present",
     place: "Dubai · Remote",
     points: [
-      "Migrated the marketing site from WordPress to Next.js for speed, scale and SEO.",
-      "Cut page load times and automated workflows across the customer journey.",
-      "Built quote comparison and policy flows used by insurance shoppers across the UAE.",
+      "Part of the team moving the website from WordPress to Next.js for speed, scale and SEO.",
+      "Work on page performance and frontend improvements across the customer journey.",
+      "Contribute to the quote comparison and policy flows insurance shoppers use across the UAE.",
     ],
   },
   {
@@ -171,8 +171,8 @@ export const projects = [
   },
   {
     name: "InsuranceMarket.ae",
-    kind: "Insurance marketplace",
-    body: "WordPress to Next.js migration and performance work for one of the UAE's insurance comparison platforms.",
+    kind: "Insurance marketplace · Current role",
+    body: "My full-time team. I help with the WordPress to Next.js migration and page performance for one of the UAE's insurance comparison platforms.",
     stack: ["Next.js", "Performance", "SEO"],
   },
   {
