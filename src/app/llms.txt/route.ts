@@ -1,4 +1,4 @@
-import { experience, projects, site } from "@/content/site";
+import { experience, projects, recommendationsUrl, site, testimonials } from "@/content/site";
 import { getStories } from "@/lib/stories";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -29,6 +29,10 @@ ${experience.map((e) => `- ${e.role}, ${e.company} (${e.period})`).join("\n")}
 
 ${projects.map((p) => `- ${p.name}: ${p.body}`).join("\n")}
 ${stories.length ? `\n## Stories\n\n${stories.map((s) => `- [${s.title}](${absoluteUrl(`/stories/${s.slug}`)}): ${s.excerpt}`).join("\n")}\n` : ""}
+## Recommendations (LinkedIn: ${recommendationsUrl})
+
+${testimonials.map((t) => `- ${t.name}, ${t.title} (${t.relation}): "${t.quote[0]}"`).join("\n")}
+
 ## Contact
 
 - Email: ${site.email}

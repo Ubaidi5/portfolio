@@ -61,39 +61,59 @@ export const crafts = [
 ] as const;
 
 export type Testimonial = {
-  quote: string;
   name: string;
+  /** Their headline at the time they wrote it. */
   title: string;
-  company: string;
-  href?: string;
-  /** Placeholder entries render in development only. Replace with the real reviews. */
-  placeholder?: boolean;
+  /** How they know Ubaid, in plain words. */
+  relation: string;
+  photo: string;
+  date: string;
+  /** Paragraphs, copied from LinkedIn as written. */
+  quote: string[];
+  /** Their own LinkedIn profile, when known. */
+  profile?: string;
 };
+
+/** Where every recommendation below can be checked. */
+export const recommendationsUrl = "https://www.linkedin.com/in/ubaid-hussain/details/recommendations/";
 
 export const testimonials: Testimonial[] = [
   {
-    quote:
-      "Replace this with the first genuine review. Keep it to two or three sentences and let it describe a result, not just a trait.",
-    name: "Reviewer name",
-    title: "Role",
-    company: "Company",
-    placeholder: true,
+    name: "Khurram Bashir",
+    title: "Founder & CEO, Retainly and ZeroSlip",
+    relation: "Client",
+    photo: "/images/recommendations/khurram-bashir.webp",
+    date: "2026-09-28",
+    quote: [
+      "I\u2019ve worked with Ubaid Hussain for the past seven years and have seen him grow from a frontend developer into a strong full-stack engineer. He\u2019s a thoughtful problem solver who takes ownership of his work and follows through when challenges arise. I\u2019d gladly recommend him to any team.",
+    ],
   },
   {
-    quote:
-      "Replace this with the second review. The strongest ones mention what changed after Ubaid got involved.",
-    name: "Reviewer name",
-    title: "Role",
-    company: "Company",
-    placeholder: true,
+    name: "Rachel Johnson",
+    title: "Product Designer",
+    relation: "Teammate at InsuranceMarket.ae",
+    photo: "/images/recommendations/rachel-johnson.webp",
+    date: "2026-09-27",
+    quote: [
+      "I\u2019ve had the opportunity to work closely with Ubaid on several projects at InsuranceMarket.ae, and he\u2019s genuinely a very skilled and dependable front-end developer.",
+      "He has worked across different InsuranceMarket product lines, including Car, Travel, Health and so on, and I\u2019ve particularly enjoyed seeing how well he understands both the technical and product sides of the work.",
+      "Ubaid is also very good with AI and has a strong ability to use it to explore solutions, work faster and turn ideas into functional experiences. I\u2019ve worked with him through some challenging technical issues, including API and journey debugging, and he\u2019s always willing to dig in and figure things out.",
+      "Beyond his technical skills, he\u2019s easy to work with, collaborative and takes ownership of his work. I\u2019d happily recommend Ubaid to any team looking for a strong front-end developer who combines technical expertise, product thinking, AI proficiency, and a genuine commitment to getting the work done well.",
+    ],
   },
   {
-    quote:
-      "Replace this with the third review. Link it to the LinkedIn recommendation so anyone can verify it.",
-    name: "Reviewer name",
-    title: "Role",
-    company: "Company",
-    placeholder: true,
+    name: "Shaheryar Ali",
+    title: "Frontend Engineer, Cloud Primero",
+    relation: "Worked together early in his career",
+    photo: "/images/recommendations/shaheryar-ali.webp",
+    date: "2026-09-28",
+    quote: [
+      "I had the opportunity to work with UBAID HUSSAIN at the beginning of my professional journey, and I can confidently say that he has played a very important role in my growth as a developer.",
+      "He is an exceptionally skilled and knowledgeable software developer who has a strong ability to understand complex problems and find effective solutions. During our time working together, we worked on several projects, many of which presented challenging technical problems. Whenever I faced a challenge, he was always there to guide me, explain things clearly, and help me approach problems with a better mindset.",
+      "What I appreciate most about him is that he never simply gave me the answers. He encouraged me to understand the problem, think critically, and improve my own skills. A significant part of my foundation as a developer comes from the guidance and mentorship I received from him.",
+      "Beyond his technical expertise, he is also a genuinely supportive, humble, and great person to work with. His professionalism, problem-solving skills, and willingness to help others make him someone I truly respect.",
+      "I\u2019m genuinely grateful that he was one of the first people to guide me in my professional career, and I highly recommend him to anyone looking for a highly skilled developer, mentor, and an excellent person to work with.",
+    ],
   },
 ];
 
