@@ -1,4 +1,4 @@
-import { experience, projects, recommendationsUrl, site, testimonials } from "@/content/site";
+import { experience, recommendationsUrl, site, studio, testimonials } from "@/content/site";
 import { getStories } from "@/lib/stories";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -17,7 +17,7 @@ Currently ${site.currently.role} at ${site.currently.company} (${site.currently.
 ## Pages
 
 - [Home](${site.url}): who Ubaid is, what he builds, testimonials and contact
-- [Work](${absoluteUrl("/work")}): experience, selected projects and skills
+- [Work](${absoluteUrl("/work")}): career timeline and résumé
 - [Stories](${absoluteUrl("/stories")}): travel, tech and life writing
 - [Résumé (PDF)](${absoluteUrl(encodeURI(site.resume))})
 
@@ -25,9 +25,9 @@ Currently ${site.currently.role} at ${site.currently.company} (${site.currently.
 
 ${experience.map((e) => `- ${e.role}, ${e.company} (${e.period})`).join("\n")}
 
-## Selected projects
+## Studio
 
-${projects.map((p) => `- ${p.name}: ${p.body}`).join("\n")}
+Founder of [${studio.name}](${studio.url}). ${studio.description} Products, case studies and technical write-ups: ${studio.work}
 ${stories.length ? `\n## Stories\n\n${stories.map((s) => `- [${s.title}](${absoluteUrl(`/stories/${s.slug}`)}): ${s.excerpt}`).join("\n")}\n` : ""}
 ## Recommendations (LinkedIn: ${recommendationsUrl})
 

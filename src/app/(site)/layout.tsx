@@ -4,14 +4,14 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { SubscribeProvider } from "@/components/Subscribe";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { personJsonLd, websiteJsonLd } from "@/lib/seo";
+import { personJsonLd, studioJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <JsonLd data={[personJsonLd(), websiteJsonLd()]} />
+      <JsonLd data={[personJsonLd(), studioJsonLd(), websiteJsonLd()]} />
       <SmoothScroll>
         <SubscribeProvider enabled={Boolean(process.env.BUTTONDOWN_API_KEY)}>
           <a

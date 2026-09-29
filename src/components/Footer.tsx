@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { nav, site } from "@/content/site";
+import { nav, site, studio } from "@/content/site";
 import { LocalTime } from "./LocalTime";
 
 export function Footer() {
@@ -41,6 +41,11 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href={studio.url} target="_blank" rel="noopener noreferrer" className="text-bone-2 transition-colors hover:text-bone">
+                  {studio.name}
+                </a>
+              </li>
             </ul>
           </div>
           <div className="col-span-2 sm:col-span-1">
