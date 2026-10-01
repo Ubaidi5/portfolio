@@ -1,11 +1,13 @@
 ---
-title: "Our Next.js builds kept running out of memory on Vercel. Sentry was the reason."
+title: "Our Next.js builds kept running out of memory. Sentry's webpack config was the reason."
 excerpt: "Raising --max-old-space-size didn't help. A webpack config added by Sentry had quietly switched off the Next.js build worker, so compile memory was never released before linting and type checking."
 category: tech
 date: 2026-10-01
 ---
 
-For a long time, one of our Next.js projects failed on Vercel more often than it passed. The build machine had 4 cores and 8 GB of RAM, which is plenty for an app of that size, and still the log kept ending the same way: the build ran out of memory.
+For a long time, one of our Next.js projects failed to build more often than it passed. We deployed it on Vercel, on a build machine with 4 cores and 8 GB of RAM, which is plenty for an app of that size, and still the log kept ending the same way: the build ran out of memory. I later hit the same error on AWS Amplify.
+
+That was the first clue. The host wasn't the problem. Next.js was doing exactly what our config told it to do.
 
 We tried a lot of things. None of them worked until I found the real cause, and the fix turned out to be two lines in `next.config.js`.
 
