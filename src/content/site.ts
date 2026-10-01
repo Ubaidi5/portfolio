@@ -19,6 +19,17 @@ export const site = {
   ],
 } as const;
 
+/** Ubaid's product studio. Products, case studies and technical write-ups live there. */
+export const studio = {
+  name: "KarachiSol",
+  url: "https://karachisol.com",
+  work: "https://karachisol.com/work",
+  summary:
+    "A product studio where I design, build and ship my own Wix and Shopify apps, and build software for a small number of clients.",
+  description:
+    "KarachiSol is a product studio founded by Ubaid Hussain that builds and ships Wix and Shopify apps, and software for clients.",
+} as const;
+
 export const nav = [
   { label: "Story", href: "/#story" },
   { label: "Work", href: "/work" },
@@ -38,25 +49,21 @@ export const crafts = [
     index: "01",
     title: "Dashboards that make sense of messy data",
     body: "Analytics, CRM and receipt data turned into screens people actually open every morning. I built the ZeroSlip dashboard end to end.",
-    tags: ["React", "Next.js", "Charts", "Data tables"],
   },
   {
     index: "02",
     title: "Commerce apps for Shopify and Wix",
     body: "Custom product fields, loyalty programs and upload flows that live inside other people's stores and have to just work.",
-    tags: ["Shopify", "Wix", "Payments"],
   },
   {
     index: "03",
     title: "Helping platforms get faster",
     body: "At InsuranceMarket.ae I'm part of the team moving the site from WordPress to Next.js, with a focus on speed and keeping what already ranks.",
-    tags: ["Next.js", "Performance", "SEO"],
   },
   {
     index: "04",
     title: "Engineering with a team of AI agents",
     body: "An orchestrator and a library of skills I wrote myself, so ideas become shipped features in days instead of weeks.",
-    tags: ["AI agents", "Automation", "DX"],
   },
 ] as const;
 
@@ -125,9 +132,7 @@ export const experience = [
     period: "Feb 2025 — Present",
     place: "Dubai · Remote",
     points: [
-      "Part of the team moving the website from WordPress to Next.js for speed, scale and SEO.",
-      "Work on page performance and frontend improvements across the customer journey.",
-      "Contribute to the quote comparison and policy flows insurance shoppers use across the UAE.",
+      "Part of the team moving the website from WordPress to Next.js, with a focus on speed and the customer journey.",
     ],
   },
   {
@@ -137,8 +142,7 @@ export const experience = [
     period: "Nov 2021 — Present",
     place: "Part-time · Remote",
     points: [
-      "Built the ZeroSlip merchant dashboard end to end, alongside full-time roles.",
-      "Their go-to frontend engineer since 2021 for smart receipts, analytics and RewardBee.",
+      "Built the merchant dashboard end to end, part-time alongside full-time roles.",
     ],
   },
   {
@@ -148,9 +152,7 @@ export const experience = [
     period: "2024 — Feb 2025",
     place: "Pakistan",
     points: [
-      "Led development of multimedia marketing apps and surgery-related platforms.",
-      "Built frontends in Next.js and React, backends in Node.js and MongoDB.",
-      "Managed timelines and mentored junior developers.",
+      "Led a small team building marketing and healthcare platforms, and mentored junior developers.",
     ],
   },
   {
@@ -160,8 +162,7 @@ export const experience = [
     period: "2022 — 2024",
     place: "Pakistan",
     points: [
-      "Built Shopify and Wix apps: custom product fields, loyalty programs, uploads.",
-      "Developed a recruitment management system for clients in Germany.",
+      "Built Shopify and Wix apps, and a recruitment system for clients in Germany.",
     ],
   },
   {
@@ -170,7 +171,7 @@ export const experience = [
     logo: "/images/eforte_solutions_logo.jpg",
     period: "2020 — 2022",
     place: "Pakistan",
-    points: ["Built dashboards, forecasting tools and landing pages in React and Next.js."],
+    points: ["Built dashboards, forecasting tools and landing pages."],
   },
   {
     role: "Volunteer Frontend Developer",
@@ -178,52 +179,6 @@ export const experience = [
     logo: "/images/noble_missions_logo.jpg",
     period: "2019 — 2022",
     place: "Remote",
-    points: ["Built a fundraising website in React for education initiatives in Nigeria."],
+    points: ["Built a fundraising website for education initiatives in Nigeria."],
   },
-] as const;
-
-export const projects = [
-  {
-    name: "ZeroSlip",
-    kind: "Smart receipts platform",
-    body: "Digital, tax-compliant receipts with warranty, product info and marketing built in. I built the merchant dashboard from the ground up.",
-    stack: ["Next.js", "React", "TypeScript", "Charts"],
-  },
-  {
-    name: "InsuranceMarket.ae",
-    kind: "Insurance marketplace · Current role",
-    body: "My full-time team. I help with the WordPress to Next.js migration and page performance for one of the UAE's insurance comparison platforms.",
-    stack: ["Next.js", "Performance", "SEO"],
-  },
-  {
-    name: "Checkeden",
-    kind: "Gym & clinic management · Sold",
-    body: "A management system for hospitals and gyms I built in 2021 and later sold. I sold 100% of it too early, and I still laugh about it.",
-    stack: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    name: "Shopify & Wix apps",
-    kind: "Commerce plugins",
-    body: "Custom product fields, loyalty programs, discounts and drag-and-drop uploads used inside merchants' live stores.",
-    stack: ["Shopify", "Wix", "React"],
-  },
-  {
-    name: "RewardBee",
-    kind: "AI rewards platform",
-    body: "Personalised loyalty and merchant analytics, integrated with ZeroSlip smart receipts.",
-    stack: ["Next.js", "AI", "Analytics"],
-  },
-  {
-    name: "AI orchestrator",
-    kind: "Personal tooling",
-    body: "A system of agents and skills that plans, builds, reviews and fixes code with me in the loop.",
-    stack: ["AI agents", "TypeScript", "Automation"],
-  },
-] as const;
-
-export const skills = [
-  { group: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux Toolkit", "React Query", "Motion"] },
-  { group: "Backend", items: ["Node.js", "NestJS", "Express", "GraphQL", "MongoDB", "PostgreSQL", "Drizzle"] },
-  { group: "Commerce", items: ["Shopify apps", "Wix apps", "Stripe", "Fabric.js"] },
-  { group: "Craft", items: ["Performance", "Technical SEO", "Design systems", "AI-assisted engineering"] },
 ] as const;

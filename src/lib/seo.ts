@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/content/site";
+import { site, studio } from "@/content/site";
 
 export const absoluteUrl = (path = "/") => `${site.url}${path.startsWith("/") ? path : `/${path}`}`;
 
@@ -36,6 +36,8 @@ export function pageMetadata({ title, description = site.description, path, type
 
 export const personId = `${site.url}/#person`;
 export const websiteId = `${site.url}/#website`;
+/** Shared with karachisol.com so both sites describe the same organization. */
+export const studioId = `${studio.url}/#organization`;
 
 export function personJsonLd() {
   return {
@@ -48,7 +50,10 @@ export function personJsonLd() {
     email: `mailto:${site.email}`,
     description: site.description,
     homeLocation: { "@type": "Place", name: site.location },
-    worksFor: { "@type": "Organization", name: site.currently.company, url: "https://insurancemarket.ae" },
+    worksFor: [
+      { "@type": "Organization", name: site.currently.company, url: "https://insurancemarket.ae" },
+      { "@id": studioId },
+    ],
     alumniOf: { "@type": "CollegeOrUniversity", name: "University of Karachi" },
     knowsAbout: [
       "React",
@@ -63,6 +68,17 @@ export function personJsonLd() {
       "AI-assisted software engineering",
     ],
     sameAs: site.social.map((s) => s.href),
+  };
+}
+
+export function studioJsonLd() {
+  return {
+    "@type": "Organization",
+    "@id": studioId,
+    name: studio.name,
+    url: studio.url,
+    description: studio.description,
+    founder: { "@id": personId },
   };
 }
 

@@ -36,13 +36,6 @@ export function Crafts() {
                 </h3>
                 <div className="md:col-span-5 md:pt-2">
                   <p className="text-base leading-relaxed text-bone-2">{c.body}</p>
-                  <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tools">
-                    {c.tags.map((t) => (
-                      <li key={t} className="rounded-full border border-line px-3 py-1 text-xs text-mute">
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </Reveal>
