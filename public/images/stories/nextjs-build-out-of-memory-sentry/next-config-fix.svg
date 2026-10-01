@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="638" viewBox="0 0 1200 638" role="img" aria-label="next.config.js with experimental.webpackBuildWorker and experimental.webpackMemoryOptimizations set to true, wrapped in withSentryConfig">
+<rect width="1200" height="638" rx="24" fill="#0d1117"/>
+<rect x="1" y="1" width="1198" height="636" rx="23" fill="none" stroke="#30363d"/>
+<path d="M1 64 H1199" stroke="#30363d"/>
+<circle cx="36" cy="32" r="7" fill="#f85149" opacity=".85"/>
+<circle cx="60" cy="32" r="7" fill="#d29922" opacity=".85"/>
+<circle cx="84" cy="32" r="7" fill="#3fb950" opacity=".85"/>
+<text x="600.0" y="38" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="18" fill="#8b949e">next.config.js</text>
+<text x="44" y="112" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">1</text>
+<text x="104" y="112" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#ff7b72">const </tspan><tspan fill="#e6edf3">{ withSentryConfig } </tspan><tspan fill="#ff7b72">= </tspan><tspan fill="#79c0ff">require</tspan><tspan fill="#e6edf3">(</tspan><tspan fill="#a5d6ff">&quot;@sentry/nextjs&quot;</tspan><tspan fill="#e6edf3">);</tspan></text>
+<text x="44" y="148" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">2</text>
+<text x="44" y="184" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">3</text>
+<text x="104" y="184" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#8b949e">/** @type {import(&#x27;next&#x27;).NextConfig} */</tspan></text>
+<text x="44" y="220" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">4</text>
+<text x="104" y="220" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#ff7b72">const </tspan><tspan fill="#79c0ff">nextConfig </tspan><tspan fill="#e6edf3">= {</tspan></text>
+<text x="44" y="256" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">5</text>
+<text x="104" y="256" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#8b949e">  // ...your existing options</tspan></text>
+<rect x="2" y="267" width="1196" height="36" fill="#3fb950" fill-opacity=".12"/>
+<rect x="2" y="267" width="4" height="36" fill="#3fb950"/>
+<text x="80" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#3fb950">+</text>
+<text x="44" y="292" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">6</text>
+<text x="104" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#e6edf3">  experimental</tspan><tspan fill="#e6edf3">: {</tspan></text>
+<rect x="2" y="303" width="1196" height="36" fill="#3fb950" fill-opacity=".12"/>
+<rect x="2" y="303" width="4" height="36" fill="#3fb950"/>
+<text x="80" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#3fb950">+</text>
+<text x="44" y="328" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">7</text>
+<text x="104" y="328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#e6edf3">    webpackBuildWorker</tspan><tspan fill="#e6edf3">: </tspan><tspan fill="#79c0ff">true</tspan><tspan fill="#e6edf3">,</tspan></text>
+<rect x="2" y="339" width="1196" height="36" fill="#3fb950" fill-opacity=".12"/>
+<rect x="2" y="339" width="4" height="36" fill="#3fb950"/>
+<text x="80" y="364" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#3fb950">+</text>
+<text x="44" y="364" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">8</text>
+<text x="104" y="364" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#e6edf3">    webpackMemoryOptimizations</tspan><tspan fill="#e6edf3">: </tspan><tspan fill="#79c0ff">true</tspan><tspan fill="#e6edf3">,</tspan></text>
+<rect x="2" y="375" width="1196" height="36" fill="#3fb950" fill-opacity=".12"/>
+<rect x="2" y="375" width="4" height="36" fill="#3fb950"/>
+<text x="80" y="400" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" fill="#3fb950">+</text>
+<text x="44" y="400" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">9</text>
+<text x="104" y="400" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#e6edf3">  },</tspan></text>
+<text x="44" y="436" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">10</text>
+<text x="104" y="436" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#e6edf3">};</tspan></text>
+<text x="44" y="472" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">11</text>
+<text x="44" y="508" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">12</text>
+<text x="104" y="508" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#8b949e">// withSentryConfig (v7) adds a `webpack` function to this config,</tspan></text>
+<text x="44" y="544" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">13</text>
+<text x="104" y="544" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#8b949e">// and that alone switches the Next.js build worker off.</tspan></text>
+<text x="44" y="580" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" fill="#484f58">14</text>
+<text x="104" y="580" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="21" xml:space="preserve"><tspan fill="#e6edf3">module</tspan><tspan fill="#e6edf3">.</tspan><tspan fill="#e6edf3">exports </tspan><tspan fill="#ff7b72">= </tspan><tspan fill="#d2a8ff">withSentryConfig</tspan><tspan fill="#e6edf3">(nextConfig, sentryWebpackPluginOptions);</tspan></text>
+</svg>
