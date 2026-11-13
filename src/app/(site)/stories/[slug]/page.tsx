@@ -105,7 +105,7 @@ export default async function StoryPage({ params }: Props) {
           <div className="mt-20 flex items-center gap-4 border-t border-line pt-10">
             <Image src={site.photo} alt="" width={56} height={56} className="size-14 rounded-full object-cover object-top" />
             <p className="text-sm leading-relaxed text-bone-2">
-              Written by <span className="text-bone">{site.name}</span>, a {site.role.toLowerCase()} who likes to travel,
+              Written by <span className="text-bone">{site.name}</span>, a full-stack engineer and AI consultant who likes to travel,
               build and write things down.
             </p>
           </div>

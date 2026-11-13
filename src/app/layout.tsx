@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   creator: site.name,
   keywords: [
     "Ubaid Hussain",
+    "AI consultant",
+    "AI automation expert",
+    "AI agents developer",
+    "AI tools expert",
+    "full-stack developer",
     "senior frontend engineer",
     "React developer",
     "Next.js developer",
@@ -49,7 +54,10 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image", creator: site.twitter },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
-  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
   icons: {
     icon: [
       { url: "/favicons/favicon.ico", sizes: "any" },

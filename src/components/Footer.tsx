@@ -29,6 +29,11 @@ export function Footer() {
               <li>
                 <a href="/feed.xml" className="text-bone-2 transition-colors hover:text-bone">RSS</a>
               </li>
+              <li>
+                <Link href="/privacy" className="text-bone-2 transition-colors hover:text-bone">
+                  Privacy
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

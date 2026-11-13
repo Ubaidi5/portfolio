@@ -30,8 +30,9 @@ export function Hero() {
         <div className="mt-10 grid gap-8 sm:mt-14 md:grid-cols-12 md:items-end">
           <Reveal delay={0.9} className="md:col-span-6 lg:col-span-5">
             <p className="text-base leading-relaxed text-bone-2 sm:text-lg">
-              Six years of turning complicated products into interfaces that feel effortless. Right now I&rsquo;m doing
-              that for {site.currently.company} in {site.currently.city}.
+              Six years of turning complicated products into software that feels effortless, now with AI agents and
+              automations doing the repeat work. Right now I&rsquo;m doing that for {site.currently.company} in{" "}
+              {site.currently.city}.
             </p>
           </Reveal>
           <Reveal delay={1.05} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end lg:col-span-7">

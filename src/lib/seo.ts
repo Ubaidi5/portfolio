@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site, studio } from "@/content/site";
+import { expertise, site, studio } from "@/content/site";
 
 export const absoluteUrl = (path = "/") => `${site.url}${path.startsWith("/") ? path : `/${path}`}`;
 
@@ -59,6 +59,7 @@ export function personJsonLd() {
       "React",
       "Next.js",
       "TypeScript",
+      "Full-stack web development",
       "Frontend engineering",
       "Web performance",
       "Technical SEO",
@@ -66,6 +67,16 @@ export function personJsonLd() {
       "Wix app development",
       "Data dashboards",
       "AI-assisted software engineering",
+      "AI consulting",
+      "AI agents",
+      "AI workflow automation",
+      "Claude Code",
+      "Model Context Protocol (MCP)",
+      "Prompt engineering",
+    ],
+    hasOccupation: [
+      { "@type": "Occupation", name: "Full-Stack Engineer" },
+      { "@type": "Occupation", name: "AI Consultant", description: expertise[0].body },
     ],
     sameAs: site.social.map((s) => s.href),
   };

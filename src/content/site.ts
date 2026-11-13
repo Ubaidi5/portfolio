@@ -1,10 +1,10 @@
 export const site = {
   name: "Ubaid Hussain",
-  role: "Senior Frontend Engineer",
+  role: "Full-Stack Engineer & AI Consultant",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://ubaidhussain.me").replace(/\/$/, ""),
   tagline: "I build the part of your product people remember.",
   description:
-    "Ubaid Hussain is a senior frontend engineer with 6+ years of building dashboards, commerce apps and web platforms in React and Next.js. Stories about work, travel and the craft of making software feel effortless.",
+    "Ubaid Hussain is a full-stack engineer and AI consultant with 6+ years of building dashboards, commerce apps and web platforms in React and Next.js. He helps teams get the most out of AI tools, build AI agents and automate repeat work. Stories about work, travel and the craft of making software feel effortless.",
   email: "ubaid7625@gmail.com",
   location: "Karachi, Pakistan",
   timeZone: "Asia/Karachi",
@@ -24,11 +24,20 @@ export const studio = {
   name: "KarachiSol",
   url: "https://karachisol.com",
   work: "https://karachisol.com/work",
+  aiConsulting: "https://karachisol.com/ai-consulting",
   summary:
-    "A product studio where I design, build and ship my own Wix and Shopify apps, and build software for a small number of clients.",
+    "A product studio where I design, build and ship my own Wix and Shopify apps, and build software, AI agents and automations for a small number of clients.",
   description:
-    "KarachiSol is a product studio founded by Ubaid Hussain that builds and ships Wix and Shopify apps, and software for clients.",
+    "KarachiSol is a product studio founded by Ubaid Hussain that builds and ships Wix and Shopify apps, and software, AI agents and automations for clients.",
 } as const;
+
+/** What Ubaid is hired for. Used in structured data and llms.txt. */
+export const expertise = [
+  { title: "AI consulting", body: "Finding where AI saves a team real time, choosing the right tools and setting them up properly." },
+  { title: "AI agents and skills", body: "Agents built around one job, with an orchestrator and reusable skills, using Claude, Claude Code and MCP." },
+  { title: "Workflow automation", body: "Repeat work such as reports, drafts, data entry and follow-ups turned into automations that run on their own." },
+  { title: "Full-stack web development", body: "Dashboards, commerce apps and web platforms in React, Next.js and TypeScript." },
+] as const;
 
 export const nav = [
   { label: "Story", href: "/#story" },
@@ -64,6 +73,16 @@ export const crafts = [
     index: "04",
     title: "Engineering with a team of AI agents",
     body: "An orchestrator and a library of skills I wrote myself, so ideas become shipped features in days instead of weeks.",
+  },
+  {
+    index: "05",
+    title: "AI consulting for teams that want more than a chat window",
+    body: "Most teams use a small part of the AI tools they pay for. I find where AI saves real time, set the tools up with your own context, and show your team how to get the most out of them.",
+  },
+  {
+    index: "06",
+    title: "Automations that take the repeat work away",
+    body: "Reports, first drafts, data entry and follow-ups turned into automations and agents that run on their own, with a person reviewing where it matters.",
   },
 ] as const;
 

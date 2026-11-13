@@ -1,4 +1,4 @@
-import { experience, recommendationsUrl, site, studio, testimonials } from "@/content/site";
+import { experience, expertise, recommendationsUrl, site, studio, testimonials } from "@/content/site";
 import { getStories } from "@/lib/stories";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -14,10 +14,17 @@ export async function GET() {
 
 Currently ${site.currently.role} at ${site.currently.company} (${site.currently.city}).
 
+## What Ubaid helps with
+
+${expertise.map((e) => `- ${e.title}: ${e.body}`).join("\n")}
+
+AI consulting and automation projects run through ${studio.name}: ${studio.aiConsulting}
+
 ## Pages
 
 - [Home](${site.url}): who Ubaid is, what he builds, testimonials and contact
 - [Work](${absoluteUrl("/work")}): career timeline and résumé
+- [Privacy](${absoluteUrl("/privacy")}): what this site collects
 - [Stories](${absoluteUrl("/stories")}): travel, tech and life writing
 - [Résumé (PDF)](${absoluteUrl(encodeURI(site.resume))})
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackLead } from "@/lib/analytics";
 
 type Status = "idle" | "loading" | "done" | "error";
 
@@ -19,6 +20,7 @@ export function ContactForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...data, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }),
     }).catch(() => null);
+    if (res?.ok) trackLead("contact_form");
     setStatus(res?.ok ? "done" : "error");
   }
 

@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
       // Old template posts are gone; send any indexed URLs to the new stories page.
       { source: "/blogs/:slug*", destination: "/stories", permanent: true },
       { source: "/projects", destination: "/work", permanent: true },
-      { source: "/privacy", destination: "/", permanent: true },
       { source: "/terms", destination: "/", permanent: true },
     ];
   },

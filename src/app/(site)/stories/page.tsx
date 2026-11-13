@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata = pageMetadata({
   title: "Stories",
-  description: "Travel notes, tech lessons and life updates from Ubaid Hussain, a frontend engineer from Karachi.",
+  description: "Travel notes, tech lessons and life updates from Ubaid Hussain, a full-stack engineer and AI consultant from Karachi.",
   path: "/stories",
 });
 

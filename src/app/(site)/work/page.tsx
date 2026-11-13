@@ -8,7 +8,7 @@ import { breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Work",
   description:
-    "The professional side of Ubaid Hussain: six years as a frontend engineer, the roles along the way, and KarachiSol, the product studio he founded.",
+    "The professional side of Ubaid Hussain: six years as a full-stack engineer, his AI consulting and automation work, the roles along the way, and KarachiSol, the product studio he founded.",
   path: "/work",
   type: "profile",
 });
@@ -40,8 +40,9 @@ export default function WorkPage() {
         <div className="mt-12 grid gap-8 md:grid-cols-12 md:items-end">
           <Reveal delay={0.6} className="md:col-span-7 lg:col-span-6">
             <p className="text-lg leading-relaxed text-bone-2">
-              Senior frontend engineer who is at home anywhere between a design file and a database. The habits that
-              stuck: clarity, speed, and shipping when I said I would.
+              Full-stack engineer and AI consultant who is at home anywhere between a design file and a database. I
+              help teams get the most out of AI tools, build agents and automate the work that repeats. The habits
+              that stuck: clarity, speed, and shipping when I said I would.
             </p>
           </Reveal>
           <Reveal delay={0.75} className="flex flex-wrap gap-3 md:col-span-5 md:justify-end lg:col-span-6">
