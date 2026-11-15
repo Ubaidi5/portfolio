@@ -1,15 +1,22 @@
 export const site = {
   name: "Ubaid Hussain",
   role: "Senior Frontend Engineer",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://ubaidhussain.me").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://ubaidhussain.me").replace(
+    /\/$/,
+    "",
+  ),
   tagline: "I build the part of your product people remember.",
   description:
     "Ubaid Hussain is a senior frontend engineer with 6+ years of building dashboards, commerce apps and web platforms in React and Next.js. Stories about work, travel and the craft of making software feel effortless.",
   email: "ubaid7625@gmail.com",
   location: "Karachi, Pakistan",
   timeZone: "Asia/Karachi",
-  currently: { role: "Senior Frontend Developer", company: "InsuranceMarket.ae", city: "Dubai" },
-  resume: "/files/Ubaid Hussain - Senior Web Developer.pdf",
+  currently: {
+    role: "Senior Frontend Developer",
+    company: "InsuranceMarket.ae",
+    city: "Dubai",
+  },
+  resume: "/files/Senior Frontend Developer & AI Consultant - Resume.pdf",
   photo: "/images/ubaid-hussain.png",
   twitter: "@ubaidnext",
   social: [
@@ -82,7 +89,8 @@ export type Testimonial = {
 };
 
 /** Where every recommendation below can be checked. */
-export const recommendationsUrl = "https://www.linkedin.com/in/ubaid-hussain/details/recommendations/";
+export const recommendationsUrl =
+  "https://www.linkedin.com/in/ubaid-hussain/details/recommendations/";
 
 export const testimonials: Testimonial[] = [
   {
@@ -179,6 +187,8 @@ export const experience = [
     logo: "/images/noble_missions_logo.jpg",
     period: "2019 — 2022",
     place: "Remote",
-    points: ["Built a fundraising website for education initiatives in Nigeria."],
+    points: [
+      "Built a fundraising website for education initiatives in Nigeria.",
+    ],
   },
 ] as const;
