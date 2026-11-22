@@ -3,6 +3,7 @@ import { site } from "@/content/site";
 import { CursorGlow } from "../CursorGlow";
 import { LocalTime } from "../LocalTime";
 import { Reveal, RevealWords } from "../Reveal";
+import { TechStack } from "../TechStack";
 
 export function Hero() {
   return (
@@ -13,28 +14,29 @@ export function Hero() {
       />
       <CursorGlow />
 
-      <div className="container-page flex flex-1 flex-col justify-center py-12">
-        <Reveal>
-          <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1">
-            <span>{site.name}</span>
-            <span aria-hidden className="hidden text-line-strong sm:inline">/</span>
-            <span>{site.role}</span>
-          </p>
-        </Reveal>
-
-        <h1 className="mt-6 max-w-[14ch] font-serif text-display text-bone sm:mt-8">
-          <RevealWords text="I build the part of your product people" delay={0.15} />{" "}
-          <RevealWords text="remember." delay={0.6} className="italic text-gold" />
-        </h1>
-
-        <div className="mt-10 grid gap-8 sm:mt-14 md:grid-cols-12 md:items-end">
-          <Reveal delay={0.9} className="md:col-span-6 lg:col-span-5">
-            <p className="text-base leading-relaxed text-bone-2 sm:text-lg">
-              Six years of turning complicated products into interfaces that feel effortless. Right now I&rsquo;m doing
-              that for {site.currently.company} in {site.currently.city}.
+      <div className="container-page grid flex-1 content-center gap-14 py-12 sm:gap-16 lg:grid-cols-12 lg:items-center lg:gap-10 xl:gap-16">
+        <div className="lg:col-span-7">
+          <Reveal>
+            <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1">
+              <span>{site.name}</span>
+              <span aria-hidden className="hidden text-line-strong sm:inline">/</span>
+              <span>{site.role}</span>
             </p>
           </Reveal>
-          <Reveal delay={1.05} className="flex flex-wrap gap-3 md:col-span-6 md:justify-end lg:col-span-7">
+
+          <h1 className="mt-6 max-w-[14ch] font-serif text-display text-bone sm:mt-8">
+            <RevealWords text="I build the part of your product people" delay={0.15} />{" "}
+            <RevealWords text="remember." delay={0.6} className="italic text-gold" />
+          </h1>
+
+          <Reveal delay={0.9} className="mt-10 max-w-xl sm:mt-12">
+            <p className="text-base leading-relaxed text-bone-2 sm:text-lg">
+              Six years of turning complicated products into interfaces that feel effortless. Right now I&rsquo;m part
+              of the team doing that at {site.currently.company} in {site.currently.city}.
+            </p>
+          </Reveal>
+
+          <Reveal delay={1.05} className="mt-8 flex flex-wrap gap-3 sm:mt-10">
             <Link
               href="/#story"
               className="group inline-flex h-12 items-center gap-3 rounded-full bg-bone px-6 text-sm font-medium text-ink transition-colors hover:bg-gold"
@@ -50,6 +52,10 @@ export function Hero() {
             </Link>
           </Reveal>
         </div>
+
+        <Reveal delay={1.1} className="lg:col-span-5">
+          <TechStack />
+        </Reveal>
       </div>
 
       <Reveal delay={1.2} className="container-page">

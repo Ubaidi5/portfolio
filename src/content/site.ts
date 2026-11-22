@@ -74,6 +74,42 @@ export const crafts = [
   },
 ] as const;
 
+/** What the hero's stack card shows. `icon` maps to a brand mark in TechIcon; items without one get a gold glyph. */
+export const stack = [
+  {
+    label: "Interface",
+    items: [
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextjs" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Tailwind CSS", icon: "tailwind" },
+    ],
+  },
+  {
+    label: "Platform",
+    items: [
+      { name: "Node.js", icon: "node" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "Vercel", icon: "vercel" },
+    ],
+  },
+  {
+    label: "Commerce",
+    items: [
+      { name: "Shopify apps", icon: "shopify" },
+      { name: "Wix apps", icon: "wix" },
+    ],
+  },
+  {
+    label: "AI",
+    items: [
+      { name: "Claude", icon: "claude" },
+      { name: "Agent skills" },
+      { name: "Orchestrators" },
+    ],
+  },
+] as const;
+
 export type Testimonial = {
   name: string;
   /** Their headline at the time they wrote it. */
